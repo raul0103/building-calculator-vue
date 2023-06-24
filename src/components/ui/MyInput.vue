@@ -48,12 +48,12 @@ export default {
     inputValue(e) {
       this.required_error = this.checkRequiredError(e.target.value);
     },
-    setEmptyRequiredFields(error_boolean) {
+    setEmptyRequiredFields(is_error) {
       const fields_store = useFieldsStore();
       fields_store.setEmptyRequiredFields(
         this.form_name,
         this.name,
-        error_boolean
+        is_error
       );
     },
   },
