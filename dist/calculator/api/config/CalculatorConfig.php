@@ -13,7 +13,11 @@ class CalculatorConfig
 
     public function __construct()
     {
-        /** Типы калькулятор - лента, плита и тд. */
+        /** 
+         * Типы калькулятор - лента, плита и тд. 
+         * 
+         * Названия типов tape,plate и тд. Используются в расчетах calculator.php
+         */
         $this->types = [
             'tape' => [
                 'title' => 'Лента',

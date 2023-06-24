@@ -9,6 +9,7 @@ export const useCalculatorStore = defineStore("calculator", () => {
   const calculator_data = ref(null);
   const calculator_key_active = ref(null);
   const calculator_data_active = ref(null);
+  const calculator_form_name = "calculator";
 
   /**
    * Определяет активный калькулятор.
@@ -40,6 +41,7 @@ export const useCalculatorStore = defineStore("calculator", () => {
     calculator_data,
     calculator_key_active,
     calculator_data_active,
+    calculator_form_name,
     setActiveCalc,
     getCalculatorDataOnPageLoad,
   };

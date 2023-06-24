@@ -1,7 +1,7 @@
 <template>
   <!-- {{ calculator_store.calculator_data_active }} -->
-  <!-- {{ fields_store?.checkEmptyRequiredFields(form_name) }} -->
-  {{ fields_store?.completed_fields }}
+  <!-- {{ fields_store?.checkEmptyRequiredFields(calculator_store.calculator_form_name) }} -->
+  <!-- {{ fields_store?.completed_fields }} -->
 
   <div class="calculator-tab__content">
     <div class="calculator-tab__content-title">
@@ -35,7 +35,7 @@
                   :calculator_key_active="
                     calculator_store.calculator_key_active
                   "
-                  :form_name="form_name"
+                  :form_name="calculator_store.calculator_form_name"
                 />
 
                 <InputTab
@@ -48,7 +48,7 @@
                   :calculator_key_active="
                     calculator_store.calculator_key_active
                   "
-                  :form_name="form_name"
+                  :form_name="calculator_store.calculator_form_name"
                 />
               </div>
             </div>
@@ -71,7 +71,9 @@
         <div
           class="calculator-tab__content-options__fields"
           :class="{
-            'block-disabled': fields_store?.checkEmptyRequiredFields(form_name),
+            'block-disabled': fields_store?.checkEmptyRequiredFields(
+              calculator_store.calculator_form_name
+            ),
           }"
         >
           <li
@@ -92,7 +94,7 @@
                   :calculator_key_active="
                     calculator_store.calculator_key_active
                   "
-                  :form_name="form_name"
+                  :form_name="calculator_store.calculator_form_name"
                 />
               </div>
             </div>
@@ -125,7 +127,6 @@ export default {
        * Название формы где находится поле.
        * Используется для записи не заполненных обязательных полей в stores/fields
        */
-      form_name: "calculator",
       calculator_store: useCalculatorStore(),
       fields_store: useFieldsStore(),
     };
