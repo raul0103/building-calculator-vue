@@ -1,0 +1,89 @@
+.calculator-tab
+    max-width: 1070px
+    margin: 15px auto
+    padding: 0 10px
+
+    &__tabs
+        display: flex
+        list-style: none
+        justify-content: center
+        &-item
+            &:first-child
+                a
+                    border-top-left-radius: 10px
+                    border-bottom-left-radius: 10px
+            &:last-child
+                a
+                    border-top-right-radius: 10px
+                    border-bottom-right-radius: 10px
+            a
+                font-size: 20px
+                padding: 14px 30px
+                cursor: pointer
+                display: inline-block
+                background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0.3))
+                box-shadow: inset 1px 1px 0px 0px #b2b2b3, inset -1px 0px 0px 0px #e5e5e6, 0px 4px 0px 0px #989898, 1px 7px 10px -1px rgba(0, 0, 0, 0.35)
+                transition: $fast-transition
+                &.active,&:hover
+                    color: #fff
+                    background-image: linear-gradient($main-color-light, $main-color-medium)
+                    box-shadow: inset 1px 1px 0px 0px $main-color-medium, inset -1px 0px 0px 0px $main-color-light, 0px 4px 0px 0px $main-color-dark, 1px 7px 10px -1px rgba(0, 0, 0, 0.35)
+                &:hover
+                    opacity: .9
+
+    &__content
+        margin-top: 15px
+        &-title
+            font-size: 22px
+            text-align: center
+            font-weight: bold
+        &-options
+            display: flex
+            flex-wrap: wrap
+            justify-content: space-between
+            margin-top: 15px
+            gap: 15px
+            &__item
+                flex: 26%
+                &-title
+                    border-top: 3px solid
+                    padding: 3px 5px
+                    border-radius: 5px
+                    transition: 0.1s
+                    color: $main-color-light
+                    text-align: center
+                    font-weight: bold
+            &__image
+                flex: 44%
+            &__fields
+                margin-top: 10px
+                display: flex
+                flex-direction: column
+                gap: 5px
+                &-item
+                    background: #fafafa
+                    // border: 1px solid #ededed
+                    padding: 3px 5px
+                    border-radius: 5px
+                    transition: $fast-transition
+                    &:hover
+                        transform: scale(1.02)
+                    &-row
+                        display: flex
+                        justify-content: space-between
+                        gap: 40px
+                    &-title
+                        // font-weight: bold
+                        display: flex
+                        align-items: center
+                    &-description
+                        color: #8d8d8d
+                    &-choice
+                        min-width: 100px
+                        max-width: 100px
+                        input,select
+                            width: 100%
+                            border: 2px solid #ededed
+                            border-radius: 5px
+                            padding: 3px 5px
+                            transition: $medium-transition

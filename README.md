@@ -3,7 +3,7 @@
 - PROD
   - Перенести директорию dist/calculator на сервер
   - На рабочей странице создать <div id="calculator-app"></div>
-  - Прописать пути к стилям и js calculator/public/assets
+  - На рабочей странице прописать пути к стилям и js calculator/public/assets
 
 ### Project Setup
 
