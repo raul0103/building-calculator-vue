@@ -23,6 +23,7 @@ export default {
     value: { default: null },
     required: { default: false },
     placeholder: { default: null },
+    calculator_key_active: { default: null },
     /**
      * Название формы где находится поле.
      * Используется для записи не заполненных обязательных полей в stores/fields
@@ -31,11 +32,41 @@ export default {
   },
   data() {
     return {
-      _value: this.value,
-      required_error: this.checkRequiredError(this.value),
+      /** Данные переменные инициализируются в хуке beforeMount*/
+      _value: null,
+      required_error: null,
     };
   },
+  beforeCreate() {
+    this.fields_store = useFieldsStore();
+  },
+  beforeMount() {
+    this._value = this.setCompeledValue();
+    this.required_error = this.checkRequiredError(this._value);
+  },
   methods: {
+    /**
+     * Если ранее были записаны данные в стор тогда получить их
+     * Иначе записать новые
+     */
+    setCompeledValue() {
+      const compeled_field = this.fields_store.getCompeledField(
+        this.form_name,
+        this.name,
+        this.calculator_key_active
+      );
+      if (compeled_field) {
+        return compeled_field;
+      } else {
+        this.fields_store.setCompeledFields(
+          this.form_name,
+          this.name,
+          this.value,
+          this.calculator_key_active
+        );
+        return this.value;
+      }
+    },
     /** Если поле обязательно и не заполненно - считать ошибкой */
     checkRequiredError(input_value) {
       let output = false;
@@ -47,10 +78,15 @@ export default {
     },
     inputValue(e) {
       this.required_error = this.checkRequiredError(e.target.value);
+      this.fields_store.setCompeledFields(
+        this.form_name,
+        this.name,
+        e.target.value,
+        this.calculator_key_active
+      );
     },
     setEmptyRequiredFields(is_error) {
-      const fields_store = useFieldsStore();
-      fields_store.setEmptyRequiredFields(
+      this.fields_store.setEmptyRequiredFields(
         this.form_name,
         this.name,
         is_error

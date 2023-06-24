@@ -44,7 +44,7 @@
             margin-top: 15px
             gap: 15px
             &__item
-                flex: 26%
+                flex: 30%
                 &-title
                     border-top: 3px solid
                     padding: 3px 5px
@@ -54,12 +54,13 @@
                     text-align: center
                     font-weight: bold
             &__image
-                flex: 44%
+                flex: 37%
             &__fields
                 margin-top: 10px
                 display: flex
                 flex-direction: column
                 gap: 5px
+                transition: $medium-transition
                 &-item
                     background: #fafafa
                     // border: 1px solid #ededed
@@ -78,9 +79,13 @@
                         align-items: center
                     &-description
                         color: #8d8d8d
+                        font-size: 13px
                     &-choice
                         min-width: 100px
                         max-width: 100px
+                        &-checkbox
+                            min-width: 20px
+                            max-width: 20px
                         input,select
                             width: 100%
                             border: 2px solid #ededed

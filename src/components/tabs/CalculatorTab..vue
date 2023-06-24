@@ -1,6 +1,7 @@
 <template>
   <!-- {{ calculator_store.calculator_data_active }} -->
   <!-- {{ fields_store?.checkEmptyRequiredFields(form_name) }} -->
+  {{ fields_store?.completed_fields }}
 
   <div class="calculator-tab__content">
     <div class="calculator-tab__content-title">
@@ -24,24 +25,29 @@
               </div>
               <div class="calculator-tab__content-options__fields-item-choice">
                 <!-- Если есть список значений option.values тогда выводится select -->
-                <select v-if="option.values" :name="option.key">
-                  <option
-                    v-for="option_value in option.values"
-                    :value="option_value"
-                    :key="option_value"
-                    :selected="option_value == option.default"
-                  >
-                    {{ `${option_value} ${option.unit}` }}
-                  </option>
-                </select>
 
-                <MyInput
+                <SelectTab
+                  v-if="option.values"
+                  :name="option.key"
+                  :values="option.values"
+                  :value="option.default"
+                  :unit="option.unit"
+                  :calculator_key_active="
+                    calculator_store.calculator_key_active
+                  "
+                  :form_name="form_name"
+                />
+
+                <InputTab
                   v-else
                   :name="option.key"
                   :value="option.default"
                   :required="option.required"
                   :step="option.step"
                   :placeholder="option.placeholder"
+                  :calculator_key_active="
+                    calculator_store.calculator_key_active
+                  "
                   :form_name="form_name"
                 />
               </div>
@@ -62,7 +68,42 @@
             calculator_store.calculator_data_active?.config.additionally.title
           }}
         </div>
-        <div class="calculator-tab__content-options__fields"></div>
+        <div
+          class="calculator-tab__content-options__fields"
+          :class="{
+            'block-disabled': fields_store?.checkEmptyRequiredFields(form_name),
+          }"
+        >
+          <li
+            v-for="option in calculator_store.calculator_data_active?.config
+              .additionally.options"
+            :key="option.key"
+            class="calculator-tab__content-options__fields-item"
+          >
+            <div class="calculator-tab__content-options__fields-item-row">
+              <div class="calculator-tab__content-options__fields-item-title">
+                {{ option.title }}
+              </div>
+              <div
+                class="calculator-tab__content-options__fields-item-choice-checkbox"
+              >
+                <CheckboxTab
+                  :name="option.key"
+                  :calculator_key_active="
+                    calculator_store.calculator_key_active
+                  "
+                  :form_name="form_name"
+                />
+              </div>
+            </div>
+            <div
+              v-if="option.description"
+              class="calculator-tab__content-options__fields-item-description"
+            >
+              {{ option.description }}
+            </div>
+          </li>
+        </div>
       </div>
 
       <div class="calculator-tab__content-options__image">IMAGE</div>
@@ -73,7 +114,9 @@
 <script>
 import { useCalculatorStore } from "@/stores/calculator.js";
 import { useFieldsStore } from "@/stores/fields.js";
-import MyInput from "@/components/ui/MyInput.vue";
+import InputTab from "@/components/ui/InputTab.vue";
+import SelectTab from "@/components/ui/SelectTab.vue";
+import CheckboxTab from "@/components/ui/CheckboxTab.vue";
 
 export default {
   data() {
@@ -89,6 +132,6 @@ export default {
   },
   mounted() {},
   methods: {},
-  components: { MyInput },
+  components: { InputTab, SelectTab, CheckboxTab },
 };
 </script>

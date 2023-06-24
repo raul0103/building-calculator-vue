@@ -91,7 +91,46 @@ class CalculatorConfig
                     // Доп опции
                     'additionally' => [
                         'title' => 'Дополнительные услуги:',
-                        'options' => []
+                        'options' => [
+                            [
+                                'key' => 'drainage_device',
+                                'title' => 'Устройство дренажа',
+                                'description' => '(по периметру фундамента)'
+                            ],
+                            [
+                                'key' => 'foundation_waterproofing',
+                                'title' => 'Гидроизоляция фундамента',
+                                'description' => '(подошва и цоколь)'
+                            ],
+                            [
+                                'key' => 'foundation_insulation',
+                                'title' => 'Утепление фундамента',
+                                'description' => '(цоколь по периметру)'
+                            ],
+                            [
+                                'key' => 'blind_area_device',
+                                'title' => 'Устройство отмостки',
+                                'description' => '(система канализационных труб с отводом от фундамента)'
+                            ],
+                            [
+                                'key' => 'sewer_wiring',
+                                'title' => 'Разводка канализации',
+                                'description' => '(система канализационных труб с отводом от фундамента)'
+                            ],
+                            [
+                                'key' => 'installation_mortgages',
+                                'title' => 'Монтаж закладных под воду, электричество и канализацию',
+                            ],
+                            [
+                                'key' => 'electricity_supply',
+                                'title' => 'Обеспечение электричеством',
+                                'description' => '(аренда генератора на весь этап строительства)'
+                            ],
+                            [
+                                'key' => 'trailer_rental',
+                                'title' => 'Аренда вагончика для проживания бригады',
+                            ],
+                        ]
                     ]
                 ]
             ],
