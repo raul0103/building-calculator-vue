@@ -19,6 +19,7 @@ import axios from "axios";
 import { useCalculatorStore } from "@/stores/calculator.js";
 import { useFieldsStore } from "@/stores/fields.js";
 import { useVariablesStore } from "@/stores/variables.js";
+import { useResultsStore } from "@/stores/results.js";
 
 export default {
   data() {
@@ -26,6 +27,7 @@ export default {
       calculator_store: useCalculatorStore(),
       fields_store: useFieldsStore(),
       variables_store: useVariablesStore(),
+      results_store: useResultsStore(),
     };
   },
   methods: {
@@ -40,7 +42,7 @@ export default {
       }
 
       axios
-        .get(`${this.variables_store.api_url}/api/index.php`, {
+        .get(`${this.variables_store.api_url}/api/calculate.php`, {
           params: {
             form_error: form_error ? 1 : 0,
             calculator_key_active: calculator_key_active,
@@ -51,7 +53,7 @@ export default {
           },
         })
         .then((response) => {
-          console.log(response);
+          this.results_store.setResults(response.data);
         });
     },
   },

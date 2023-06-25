@@ -13,8 +13,8 @@ if ($_GET['form_error']) {
 switch ($_GET['calculator_key_active']) {
         /** Расчет ленточного фундамента */
     case 'tape':
-        include './calculate/Tape.php';
+        include './calculators/Tape.php';
         $calculate = new Tape($_GET['values']);
-        echo $calculate->result();
+        echo json_encode($calculate->result());
         return;
 }

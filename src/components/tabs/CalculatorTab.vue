@@ -116,9 +116,9 @@
 <script>
 import { useCalculatorStore } from "@/stores/calculator.js";
 import { useFieldsStore } from "@/stores/fields.js";
-import InputTab from "@/components/ui/InputTab.vue";
-import SelectTab from "@/components/ui/SelectTab.vue";
-import CheckboxTab from "@/components/ui/CheckboxTab.vue";
+import InputTab from "@/components/tabs/ui/InputTab.vue";
+import SelectTab from "@/components/tabs/ui/SelectTab.vue";
+import CheckboxTab from "@/components/tabs/ui/CheckboxTab.vue";
 
 export default {
   data() {

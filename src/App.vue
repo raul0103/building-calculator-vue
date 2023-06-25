@@ -3,6 +3,7 @@
     <CalculatorTabs />
     <CalculatorTab />
   </div>
+  <CalculatorResult />
   <CalculatorSubmit />
 </template>
 
@@ -11,6 +12,7 @@ import { useCalculatorStore } from "@/stores/calculator.js";
 
 import CalculatorTabs from "@/components/tabs/CalculatorTabs.vue";
 import CalculatorTab from "@/components/tabs/CalculatorTab.vue";
+import CalculatorResult from "@/components/CalculatorResult.vue";
 import CalculatorSubmit from "@/components/CalculatorSubmit.vue";
 
 export default {
@@ -23,6 +25,11 @@ export default {
     this.calculator_store.getCalculatorDataOnPageLoad();
   },
   methods: {},
-  components: { CalculatorTabs, CalculatorTab, CalculatorSubmit },
+  components: {
+    CalculatorTabs,
+    CalculatorTab,
+    CalculatorResult,
+    CalculatorSubmit,
+  },
 };
 </script>

@@ -5,18 +5,21 @@
  * 
  * Здесь храняться данные по калькуляторам
  * Так же от сюда производятся основные действия с данными 
+ * TODO: В будущем можно эти данные сделать редактируемыми и хранить например в json формате
  */
 
 class CalculatorConfig
 {
     public $types;
+    public $additional_expenses;
 
     public function __construct()
     {
         /** 
          * Типы калькулятор - лента, плита и тд. 
          * 
-         * Названия типов tape,plate и тд. Используются в расчетах calculator.php
+         * Названия типов tape,plate и тд. 
+         * Используются в для фронта
          */
         $this->types = [
             'tape' => [
@@ -73,14 +76,14 @@ class CalculatorConfig
                                 'key' => 'tape_length',
                                 'title' => 'Длина ленты',
                                 'description' => '(это расчетная длина ленты, если у вас свое значение, подставьте его)',
-                                'placeholder' => 0,
+                                'default' => 0,
                                 'unit' => 'м.п.'
                             ],
                             [
                                 'key' => 'foundation_perimeter',
                                 'title' => 'Периметр фундамента',
                                 'description' => '(это расчетная длина ленты, если у вас свое значение, подставьте его)',
-                                'placeholder' => 0,
+                                'default' => 0,
                                 'unit' => 'м.п.'
                             ],
                             [
@@ -144,6 +147,175 @@ class CalculatorConfig
                     'dimensions' => [],
                     'additionally' => []
                 ]
+            ],
+            'plate_grillage' => [
+                'title' => 'Плита с нижним ростверком',
+                'config' => [
+                    'dimensions' => [],
+                    'additionally' => []
+                ]
+            ]
+        ];
+
+        /**
+         * Дополнительные расходы
+         * 
+         * Используются для расчета в calculators/ и выводятся с результатами
+         * Так же делятся на типы tape,plate и тд.
+         */
+        $this->additional_expenses = [
+            'tape' => [
+                'works' => [
+                    'title' => 'Работы',
+                    'options' => [
+                        'breakdown_axes' => [
+                            'title' => 'Планировка, разбивка осей',
+                            'quantity' => 1,
+                            'basic_price' => [6000],
+                            'unit' => 'шт'
+                        ],
+                        'excavation' => [
+                            'title' => 'Земляные работы (рытье траншеи)',
+                            'basic_price' => [1000],
+                            'unit' => 'м<sup>3</sup>'
+                        ],
+                        'geotextile_laying' => [
+                            'title' => 'Укладка геотекстиля',
+                            'quantity_coeff' => [0.6, 1.15],
+                            'basic_price' => [20],
+                            'unit' => 'м<sup>3</sup>'
+                        ],
+                        'gravel_pad_device' => [
+                            'title' => 'Устройство песчано-гравийной подушки',
+                            'quantity_coeff' => [1.3],
+                            'basic_price' => [300],
+                            'unit' => 'м<sup>3</sup>'
+                        ],
+                        'concrete_works' => [
+                            'title' => 'Бетонные работы (выставление опалубки, вязка арматуры, заливка бетона)',
+                            'basic_coeff' => 'УСЛОВИЕ: <10 | >=10 ; <15 | -',
+                            'quantity_coeff' => [1.05],
+                            'basic_price' => [8000, 7000, 6000],
+                            'unit' => 'м<sup>3</sup>'
+                        ]
+                    ]
+                ],
+                'materials' => [
+                    'title' => 'Материалы',
+                    'options' => [
+                        'sand_delivery' => [
+                            'title' => 'Песок с доставкой',
+                            'basic_coeff' => 'УСЛОВИЕ: > 10 | -',
+                            'basic_price' => [550, 800],
+                            'quantity_coeff' => [1.3],
+                            'unit' => 'м<sup>3</sup>'
+                        ],
+                        'geotextile' => [
+                            'title' => 'Геотекстиль',
+                            'quantity_coeff' => [0.6, 1.15],
+                            'basic_price' => [35],
+                            'unit' => 'м<sup>2</sup>'
+                        ],
+                        'technical_film' => [
+                            'title' => 'Пленка техническая',
+                            'quantity_coeff' =>  [0.1, 1.2],
+                            'basic_price' => [15],
+                            'unit' => 'м<sup>2</sup>'
+                        ],
+                        'formwork' => [
+                            'title' => 'Опалубка',
+                            'quantity_coeff' => [1.15],
+                            'basic_price' => [8500],
+                            'unit' => 'м<sup>3</sup>'
+                        ],
+                        'armature_a500С_d12mm' => [
+                            'title' => 'Арматура А500С d12мм',
+                            'quantity_coeff' => [0.888, 1.25, 1000],
+                            'basic_price' => [41200],
+                            'unit' => 'т'
+                        ],
+                        'armature_a500С_d8mm' => [
+                            'title' => 'Арматура А500С d8мм',
+                            'quantity_coeff' => [0.495, 1.15, 1000],
+                            'basic_price' => [45900],
+                            'unit' => 'т'
+                        ],
+                        'commercial_concrete' => [
+                            'title' => 'Бетон товарный В22,5М300П3 с доставкой',
+                            'basic_coeff' => '30 | 450 | 15',
+                            'quantity_coeff' => [1.05],
+                            'basic_price' => [3350],
+                            'unit' => 'м<sup>3</sup>'
+                        ]
+                    ]
+                ],
+                'overhead_transport' => [
+                    'title' => 'Накладные и транспортные расходы',
+                    'options' => [
+                        'overhead' => [
+                            'title' => 'Накладные и прочие расходы (фиксаторы, саморезы, гвозди, подставки, вязальная проволока и прочее)',
+                            'basic_coeff' => [0.1],
+                            'quantity' => 1,
+                            'unit' => 'шт'
+                        ],
+                        'transport' => [
+                            'title' => 'Транспортные и логистические расходы',
+                            'basic_coeff' => [2, 45, 0.02],
+                            'basic_price' => [6000],
+                            'quantity' => 1,
+                            'unit' => 'шт'
+                        ]
+                    ]
+                ],
+                'additional_work' => [
+                    'title' => 'Дополнительные работы и услуги',
+                    'options' => [
+                        'drainage_device' => [
+                            'title' => 'Устройство дренажа по периметру фундамента с отводом в сторону на 10м',
+                            'basic_price' => [1300],
+                            'unit' => 'м.п.'
+                        ],
+                        'foundation_waterproofing' => [
+                            'title' => 'Гидроизоляция подошвы и боковых стенок фундамента, технониколь, 1 слой',
+                            'basic_price' => [310],
+                            'unit' => 'м<sup>2</sup>'
+                        ],
+                        'foundation_insulation' => [
+                            'title' => 'Утепление фундамента (по периметру), пеноплекс 50мм',
+                            'basic_price' => [600],
+                            'unit' => 'м<sup>2</sup>'
+                        ],
+                        'blind_area_device' => [
+                            'title' => 'Устройство бетонной отмостки',
+                            'basic_price' => [2000],
+                            'unit' => 'м.п.'
+                        ],
+                        'sewer_wiring' => [
+                            'title' => 'Разводка канализационных труб, d110мм',
+                            'basic_price' => [1400],
+                            'unit' => 'м.п.'
+                        ],
+                        'installation_mortgages' => [
+                            'title' => 'Монтаж закладных под воду, электричество и канализацию',
+                            'basic_price' => [2000],
+                            'unit' => 'шт'
+                        ],
+                        'electricity_supply' => [
+                            'title' => 'Аренда генератора (если нет электричества на участке)',
+                            'basic_price' => [6000],
+                            'basic_coeff' => [50000, 800],
+                            'quantity' => 1,
+                            'unit' => 'шт'
+                        ],
+                        'trailer_rental' => [
+                            'title' => 'Аренда вагончика для проживания бригады',
+                            'basic_price' => [7000],
+                            'basic_coeff' => [2, 50, 2, 6000],
+                            'quantity' => 1,
+                            'unit' => 'шт'
+                        ]
+                    ]
+                ]
             ]
         ];
     }
@@ -160,9 +332,19 @@ class CalculatorConfig
         return $output;
     }
 
-    /** Отдает все данные по калькуляторам */
+    /** Отдает все данные по калькуляторам для отрисовки на фронте */
     public function getCalculatorData()
     {
         return $this->types;
+    }
+
+    /**
+     * Отдает данные по дополнительным раходам
+     * 
+     * @param type - Тип калькулятора tape,plate и тд.
+     */
+    public function getAdditionalExpenses($type)
+    {
+        return $this->additional_expenses[$type];
     }
 }

@@ -1,3 +1,7 @@
+/**
+ * Стор для хранения полей с ошибками и данных по заполненным полям
+ */
+
 import { ref } from "vue";
 import { defineStore } from "pinia";
 
