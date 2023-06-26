@@ -42,7 +42,7 @@ export default {
       }
 
       axios
-        .get(`${this.variables_store.api_url}/api/calculate.php`, {
+        .get(`${this.variables_store.api_url}/api/calculate-controller.php`, {
           params: {
             form_error: form_error ? 1 : 0,
             calculator_key_active: calculator_key_active,

@@ -24,6 +24,10 @@ class CalculatorConfig
         $this->types = [
             'tape' => [
                 'title' => 'Лента',
+                'images' => [
+                    'calculator/public/assets/images/tape/basic_01.png',
+                    'calculator/public/assets/images/tape/basic_02.png'
+                ],
                 'config' => [
                     // Размеры
                     'dimensions' => [
@@ -89,6 +93,7 @@ class CalculatorConfig
                             [
                                 'key' => 'distance_from_cad',
                                 'title' => 'Расстояние от КАД',
+                                'required' => true,
                                 'default' => 25,
                                 'step' => 1,
                                 'unit' => 'км'

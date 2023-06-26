@@ -15,8 +15,19 @@ export default defineConfig({
     outDir: "dist/calculator/public",
     rollupOptions: {
       output: {
-        assetFileNames: "assets/[name].[ext]",
         entryFileNames: "assets/[name].js",
+
+        assetFileNames: ({ name }) => {
+          if (/\.(gif|jpe?g|png|svg)$/.test(name ?? "")) {
+            return "assets/images/[name].[ext]";
+          }
+
+          if (/\.sass$/.test(name ?? "")) {
+            return "assets/[name].[ext]";
+          }
+
+          return "assets/[name].[ext]";
+        },
       },
     },
   },

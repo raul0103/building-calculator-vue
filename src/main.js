@@ -1,4 +1,9 @@
 import "./assets/sass/main.sass";
+/** сохраняем все картинки в момент сборки */
+import.meta.glob("@/assets/images/**", {
+  eager: true,
+  as: "url",
+});
 
 import { cors } from "cors";
 import { createApp } from "vue";

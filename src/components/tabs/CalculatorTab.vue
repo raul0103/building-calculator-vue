@@ -108,7 +108,9 @@
         </div>
       </div>
 
-      <div class="calculator-tab__content-options__image">IMAGE</div>
+      <div class="calculator-tab__content-options__image">
+        <CalculatorImages />
+      </div>
     </div>
   </div>
 </template>
@@ -119,20 +121,17 @@ import { useFieldsStore } from "@/stores/fields.js";
 import InputTab from "@/components/tabs/ui/InputTab.vue";
 import SelectTab from "@/components/tabs/ui/SelectTab.vue";
 import CheckboxTab from "@/components/tabs/ui/CheckboxTab.vue";
+import CalculatorImages from "@/components/tabs/CalculatorImages.vue";
 
 export default {
   data() {
     return {
-      /**
-       * Название формы где находится поле.
-       * Используется для записи не заполненных обязательных полей в stores/fields
-       */
       calculator_store: useCalculatorStore(),
       fields_store: useFieldsStore(),
     };
   },
   mounted() {},
   methods: {},
-  components: { InputTab, SelectTab, CheckboxTab },
+  components: { InputTab, SelectTab, CheckboxTab, CalculatorImages },
 };
 </script>
