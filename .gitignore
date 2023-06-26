@@ -9,10 +9,11 @@ lerna-debug.log*
 
 node_modules
 .DS_Store
-dist/calculator/public
+dist/calculator/assets
 dist-ssr
 coverage
 *.local
+package-lock.json
 
 /cypress/videos/
 /cypress/screenshots/

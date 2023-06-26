@@ -1,17 +1,15 @@
-import "./assets/sass/main.sass";
-/** сохраняем все картинки в момент сборки */
-import.meta.glob("@/assets/images/**", {
-  eager: true,
-  as: "url",
-});
+import "@/assets/sass/main.sass";
 
-import { cors } from "cors";
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 import App from "./App.vue";
 
+// Опция для обновления изменившихся модулей в реал тайм
+if (module.hot) {
+  module.hot.accept();
+}
+
 const app = createApp(App);
 
 app.use(createPinia());
-app.use(cors);
 app.mount("#calculator-app");
