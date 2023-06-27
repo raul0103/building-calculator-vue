@@ -18,6 +18,8 @@
               .dimensions.options"
             :key="option.key"
             class="calculator-tab__content-options__fields-item"
+            @mouseenter.self="(e) => hoverOption(option.key, option.image)"
+            @mouseleave.self="(e) => hoverOption(option.key, option.image)"
           >
             <div class="calculator-tab__content-options__fields-item-row">
               <div class="calculator-tab__content-options__fields-item-title">
@@ -81,6 +83,8 @@
               .additionally.options"
             :key="option.key"
             class="calculator-tab__content-options__fields-item"
+            @mouseenter.self="(e) => hoverOption(option.key, option.image)"
+            @mouseleave.self="(e) => hoverOption(option.key, option.image)"
           >
             <div class="calculator-tab__content-options__fields-item-row">
               <div class="calculator-tab__content-options__fields-item-title">
@@ -91,6 +95,7 @@
               >
                 <CheckboxTab
                   :name="option.key"
+                  :active_image="option.image"
                   :calculator_key_active="
                     calculator_store.calculator_key_active
                   "
@@ -109,7 +114,8 @@
       </div>
 
       <div class="calculator-tab__content-options__image">
-        <CalculatorImages />
+        <CalculatorSecondaryImage :hover_image="hovered.hover_image" />
+        <CalculatorMainImage :hover_image="hovered.hover_image" />
       </div>
     </div>
   </div>
@@ -121,17 +127,51 @@ import { useFieldsStore } from "@/stores/fields.js";
 import InputTab from "@/components/tabs/ui/InputTab.vue";
 import SelectTab from "@/components/tabs/ui/SelectTab.vue";
 import CheckboxTab from "@/components/tabs/ui/CheckboxTab.vue";
-import CalculatorImages from "@/components/tabs/CalculatorImages.vue";
+import CalculatorSecondaryImage from "@/components/tabs/images/CalculatorSecondaryImage.vue";
+import CalculatorMainImage from "@/components/tabs/images/CalculatorMainImage.vue";
 
 export default {
   data() {
     return {
       calculator_store: useCalculatorStore(),
       fields_store: useFieldsStore(),
+      hovered: {
+        option_keys: {},
+        hover_image: null,
+      },
     };
   },
   mounted() {},
-  methods: {},
-  components: { InputTab, SelectTab, CheckboxTab, CalculatorImages },
+  methods: {
+    hoverOption(key, hover_image) {
+      /**
+       * Предварительно удаляем hover у всех элементов
+       * Просто при быстрых движениях мыши может наложиться два ховера
+       */
+      Object.keys(this.hovered.option_keys).forEach((object_key) => {
+        if (object_key !== key) this.hovered.option_keys[object_key] = false;
+      });
+
+      if (!this.hovered.option_keys[key]) {
+        this.hovered.option_keys[key] = true;
+      } else {
+        this.hovered.option_keys[key] = !this.hovered.option_keys[key];
+      }
+
+      /** сохраняем активный ключ для передачи в компонент с картинками */
+      if (this.hovered.option_keys[key]) {
+        this.hovered.hover_image = hover_image;
+      } else {
+        this.hovered.hover_image = null;
+      }
+    },
+  },
+  components: {
+    InputTab,
+    SelectTab,
+    CheckboxTab,
+    CalculatorSecondaryImage,
+    CalculatorMainImage,
+  },
 };
 </script>

@@ -24,9 +24,12 @@ class CalculatorConfig
         $this->types = [
             'tape' => [
                 'title' => 'Лента',
-                'images' => [
-                    'calculator/public/assets/images/tape/basic_01.png',
-                    'calculator/public/assets/images/tape/basic_02.png'
+                'image' => [
+                    'style' => ['', 'position: relative; left: 42px; top: -25px;'],
+                    'src' =>  [
+                        'calculator/assets/images/tape/basic_01.png',
+                        'calculator/assets/images/tape/basic_02.png'
+                    ]
                 ],
                 'config' => [
                     // Размеры
@@ -44,7 +47,7 @@ class CalculatorConfig
                          * @param 'values' - Список доступных значений. Откроется через select
                          * @param 'description' - Описание
                          * @param 'step' - Шаг в поле input type="number"
-                         * @param 'x'
+                         * @param 'image' - для фронта
                          * @param 'x'
                          */
                         'options' => [
@@ -53,42 +56,66 @@ class CalculatorConfig
                                 'title' => 'Длина',
                                 'required' => true,
                                 'placeholder' => 'Длина',
-                                'unit' => 'м'
+                                'unit' => 'м',
+                                'image' => [
+                                    'style' => ' left: 0; top: -33px; ',
+                                    'src' => 'calculator/assets/images/tape/param_01.png'
+                                ]
                             ],
                             [
                                 'key' => 'width',
                                 'title' => 'Ширина',
                                 'required' => true,
                                 'placeholder' => 'Ширина',
-                                'unit' => 'м'
+                                'unit' => 'м',
+                                'image' => [
+                                    'style' => ' left: 220px; top: -108px; ',
+                                    'src' => 'calculator/assets/images/tape/param_02.png'
+                                ]
                             ],
                             [
                                 'key' => 'tape_height',
                                 'title' => 'Высота ленты',
                                 'default' => 0.6,
                                 'values' => [0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8],
-                                'unit' => 'м'
+                                'unit' => 'м',
+                                'image' => [
+                                    'style' => 'left: 0; top: -96px; ',
+                                    'src' => 'calculator/assets/images/tape/param_03.png'
+                                ]
                             ],
                             [
                                 'key' => 'tape_width',
                                 'title' => 'Ширина ленты',
                                 'default' => 0.25,
                                 'values' => [0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6],
-                                'unit' => 'м'
+                                'unit' => 'м',
+                                'image' => [
+                                    'style' => 'left: 152px; top: -58px; ',
+                                    'src' => 'calculator/assets/images/tape/param_04.png'
+                                ]
                             ],
                             [
                                 'key' => 'tape_length',
                                 'title' => 'Длина ленты',
                                 'description' => '(это расчетная длина ленты, если у вас свое значение, подставьте его)',
                                 'default' => 0,
-                                'unit' => 'м.п.'
+                                'unit' => 'м.п.',
+                                'image' => [
+                                    'style' => 'left: 65px; top: -128px;',
+                                    'src' => 'calculator/assets/images/tape/param_05.png'
+                                ]
                             ],
                             [
                                 'key' => 'foundation_perimeter',
                                 'title' => 'Периметр фундамента',
                                 'description' => '(это расчетная длина ленты, если у вас свое значение, подставьте его)',
                                 'default' => 0,
-                                'unit' => 'м.п.'
+                                'unit' => 'м.п.',
+                                'image' => [
+                                    'style' => 'left: 46px; top: -179px;',
+                                    'src' => 'calculator/assets/images/tape/param_06.png'
+                                ]
                             ],
                             [
                                 'key' => 'distance_from_cad',
@@ -107,22 +134,38 @@ class CalculatorConfig
                             [
                                 'key' => 'drainage_device',
                                 'title' => 'Устройство дренажа',
-                                'description' => '(по периметру фундамента)'
+                                'description' => '(по периметру фундамента)',
+                                'image' => [
+                                    'style' => 'left: 33px; top: -131px;z-index:1',
+                                    'src' => 'calculator/assets/images/tape/extra_01.png'
+                                ]
                             ],
                             [
                                 'key' => 'foundation_waterproofing',
                                 'title' => 'Гидроизоляция фундамента',
-                                'description' => '(подошва и цоколь)'
+                                'description' => '(подошва и цоколь)',
+                                'image' => [
+                                    'style' => 'left: 41px; top: -120px;z-index:1',
+                                    'src' => 'calculator/assets/images/tape/extra_02.png'
+                                ]
                             ],
                             [
                                 'key' => 'foundation_insulation',
                                 'title' => 'Утепление фундамента',
-                                'description' => '(цоколь по периметру)'
+                                'description' => '(цоколь по периметру)',
+                                'image' => [
+                                    'style' => 'left: 45px; top: -121px;z-index:2',
+                                    'src' => 'calculator/assets/images/tape/extra_03.png'
+                                ]
                             ],
                             [
                                 'key' => 'blind_area_device',
                                 'title' => 'Устройство отмостки',
-                                'description' => '(система канализационных труб с отводом от фундамента)'
+                                'description' => '(система канализационных труб с отводом от фундамента)',
+                                'image' => [
+                                    'style' => 'top: -80px; left: 235px;z-index:1',
+                                    'src' => 'calculator/assets/images/tape/extra_04.png'
+                                ]
                             ],
                             [
                                 'key' => 'sewer_wiring',
@@ -131,16 +174,24 @@ class CalculatorConfig
                             ],
                             [
                                 'key' => 'installation_mortgages',
-                                'title' => 'Монтаж закладных под воду, электричество и канализацию',
+                                'title' => 'Монтаж закладных под воду, электричество и канализацию'
                             ],
                             [
                                 'key' => 'electricity_supply',
                                 'title' => 'Обеспечение электричеством',
-                                'description' => '(аренда генератора на весь этап строительства)'
+                                'description' => '(аренда генератора на весь этап строительства)',
+                                'image' => [
+                                    'style' => 'left: 44px; top: -185px;z-index:3px',
+                                    'src' => 'calculator/assets/images/tape/extra_07.png'
+                                ]
                             ],
                             [
                                 'key' => 'trailer_rental',
                                 'title' => 'Аренда вагончика для проживания бригады',
+                                'image' => [
+                                    'style' => 'left: 91px; top: -218px; z-index: 0;',
+                                    'src' => 'calculator/assets/images/tape/extra_08.png'
+                                ]
                             ],
                         ]
                     ]

@@ -9,11 +9,13 @@
 
 <script>
 import { useFieldsStore } from "@/stores/fields.js";
+import { useImagesStore } from "@/stores/images.js";
 
 export default {
   props: {
     name: { default: "checkbox-name" },
     calculator_key_active: { default: null },
+    active_image: { default: null }, // Активная картинка.
     /**
      * Название формы где находится поле.
      * Используется для записи не заполненных обязательных полей в stores/fields
@@ -23,6 +25,7 @@ export default {
   data() {
     return {
       checked: false,
+      images_store: useImagesStore(),
     };
   },
   beforeCreate() {
@@ -62,6 +65,13 @@ export default {
         this.checked,
         this.calculator_key_active
       );
+
+      /** Записали изображение как активное для отображения */
+      if (this.active_image) {
+        if (this.checked)
+          this.images_store.setActiveImage(this.name, this.active_image);
+        else this.images_store.removeActiveImage(this.name);
+      }
     },
   },
 };

@@ -3,15 +3,29 @@
         display: flex
         list-style: none
         justify-content: center
+        @media (max-width:$laptop-width)
+            flex-direction: column
+            gap: 3px
         &-item
+            a
+                @media (max-width:$laptop-width)
+                    text-align: center
+                    width: 100%
             &:first-child
                 a
                     border-top-left-radius: 10px
                     border-bottom-left-radius: 10px
+                    @media (max-width:$laptop-width)
+                        border-top-left-radius: 10px
+                        border-top-right-radius: 10px
+                        border-bottom-left-radius: 0
             &:last-child
                 a
                     border-top-right-radius: 10px
                     border-bottom-right-radius: 10px
+                    @media (max-width:$laptop-width)
+                        border-top-right-radius: 0
+                        border-bottom-left-radius: 10px
             a
                 font-size: 20px
                 padding: 14px 30px
@@ -35,12 +49,16 @@
             font-weight: bold
         &-options
             display: flex
-            flex-wrap: wrap
-            justify-content: space-between
             margin-top: 15px
             gap: 15px
+            @media (max-width:$tablet-width)
+                flex-wrap: wrap
             &__item
-                flex: 30%
+                width: 300px
+                @media (max-width:$laptop-width)
+                    width: 50%
+                @media (max-width:$tablet-width)
+                    width: 100%
                 &-title
                     border-top: 3px solid
                     padding: 3px 5px
@@ -50,7 +68,25 @@
                     text-align: center
                     font-weight: bold
             &__image
-                flex: 37%
+                display: flex
+                align-items: center
+                justify-content: center
+                @media (max-width:$laptop-width)
+                    display: none!important
+
+                .hover-image
+                    z-index: 99!important
+                .image-hide
+                    opacity: .5
+                    filter: grayscale(4)
+                &-secondary
+                    position: relative
+                    img
+                        position: absolute
+                        z-index: 10
+                &-main
+                    img
+                        transition: $medium-transition
             &__fields
                 margin-top: 10px
                 display: flex
