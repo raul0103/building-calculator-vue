@@ -1,16 +1,7 @@
 <template>
-  <div
-    class="calculator-submit"
-    :class="{
-      'block-disabled': fields_store?.checkEmptyRequiredFields(
-        calculator_store.calculator_form_name
-      ),
-    }"
-  >
-    <button class="calculator-submit__button" @click="submit">
-      Получить смету
-    </button>
-  </div>
+  <button class="calculator-button-primary" @click="submit">
+    Получить смету
+  </button>
 </template>
 
 <script>
@@ -43,7 +34,7 @@ export default {
 
       axios
         .get(
-          `${this.variables_store.api_url}/calculator/api/calculate-controller.php`,
+          `${this.variables_store.api_url}/calculator/api/controllers/calculator.php`,
           {
             params: {
               form_error: form_error ? 1 : 0,

@@ -9,11 +9,11 @@ lerna-debug.log*
 
 node_modules
 .DS_Store
-dist/calculator/assets
 dist-ssr
 coverage
 *.local
 package-lock.json
+composer.lock
 
 /cypress/videos/
 /cypress/screenshots/
@@ -27,3 +27,9 @@ package-lock.json
 *.njsproj
 *.sln
 *.sw?
+
+.htaccess
+
+dist/calculator/assets
+dist/calculator/vendor
+dist/calculator/pdf

@@ -22,6 +22,12 @@ npm run serve
 ```sh
 npm run build
 ```
+### Vendor PHP
+
+```sh
+composer install
+```
+
 
 ### Принцип работы
 

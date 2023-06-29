@@ -4,8 +4,8 @@
  * Отдает данные по калькуляторам при загрузке страницы
  */
 
-include './utils/cors.php';
-include './config/CalculatorConfig.php';
+include '../utils/cors.php';
+include '../config/CalculatorConfig.php';
 
 $calculator_config = new CalculatorConfig();
 

@@ -124,11 +124,11 @@
 <script>
 import { useCalculatorStore } from "@/stores/calculator.js";
 import { useFieldsStore } from "@/stores/fields.js";
-import InputTab from "@/components/tabs/ui/InputTab.vue";
-import SelectTab from "@/components/tabs/ui/SelectTab.vue";
-import CheckboxTab from "@/components/tabs/ui/CheckboxTab.vue";
-import CalculatorSecondaryImage from "@/components/tabs/images/CalculatorSecondaryImage.vue";
-import CalculatorMainImage from "@/components/tabs/images/CalculatorMainImage.vue";
+import InputTab from "./components/ui/InputTab.vue";
+import SelectTab from "./components/ui/SelectTab.vue";
+import CheckboxTab from "./components/ui/CheckboxTab.vue";
+import CalculatorSecondaryImage from "./components/images/CalculatorSecondaryImage.vue";
+import CalculatorMainImage from "./components/images/CalculatorMainImage.vue";
 
 export default {
   data() {

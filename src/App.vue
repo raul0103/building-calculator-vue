@@ -4,7 +4,7 @@
     <CalculatorTab />
   </div>
   <CalculatorResult />
-  <CalculatorSubmit />
+  <CalculatorControls />
 </template>
 
 <script>
@@ -13,7 +13,7 @@ import { useCalculatorStore } from "@/stores/calculator.js";
 import CalculatorTabs from "@/components/tabs/CalculatorTabs.vue";
 import CalculatorTab from "@/components/tabs/CalculatorTab.vue";
 import CalculatorResult from "@/components/CalculatorResult.vue";
-import CalculatorSubmit from "@/components/CalculatorSubmit.vue";
+import CalculatorControls from "@/components/controls/CalculatorControls.vue";
 
 export default {
   data() {
@@ -29,7 +29,7 @@ export default {
     CalculatorTabs,
     CalculatorTab,
     CalculatorResult,
-    CalculatorSubmit,
+    CalculatorControls,
   },
 };
 </script>
