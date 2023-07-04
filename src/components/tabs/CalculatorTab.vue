@@ -114,8 +114,8 @@
       </div>
 
       <div class="calculator-tab__content-options__image">
-        <CalculatorSecondaryImage :hover_image="hovered.hover_image" />
-        <CalculatorMainImage :hover_image="hovered.hover_image" />
+        <TabSecondaryImage :hover_image="hovered.hover_image" />
+        <TabMainImage :hover_image="hovered.hover_image" />
       </div>
     </div>
   </div>
@@ -127,8 +127,8 @@ import { useFieldsStore } from "@/stores/fields.js";
 import InputTab from "./components/ui/InputTab.vue";
 import SelectTab from "./components/ui/SelectTab.vue";
 import CheckboxTab from "./components/ui/CheckboxTab.vue";
-import CalculatorSecondaryImage from "./components/images/CalculatorSecondaryImage.vue";
-import CalculatorMainImage from "./components/images/CalculatorMainImage.vue";
+import TabSecondaryImage from "./components/images/TabSecondaryImage.vue";
+import TabMainImage from "./components/images/TabMainImage.vue";
 
 export default {
   data() {
@@ -170,8 +170,8 @@ export default {
     InputTab,
     SelectTab,
     CheckboxTab,
-    CalculatorSecondaryImage,
-    CalculatorMainImage,
+    TabSecondaryImage,
+    TabMainImage,
   },
 };
 </script>

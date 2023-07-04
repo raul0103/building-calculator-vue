@@ -4,3 +4,33 @@
     display: flex
     justify-content: center
     gap: 15px
+    &__form-callback
+        text-align: center
+        width: 100%
+        &__form-groups
+            display: flex
+            flex-wrap: wrap
+            gap: 5px
+            margin-bottom: 20px
+            justify-content: center
+            @media (max-width:$tablet-width)
+                flex-direction: column
+                align-items: center
+        &__form-group
+            display: flex
+            flex-direction: column
+            gap: 5px
+            max-width: 200px
+            width: 100%
+            @media (max-width:$tablet-width)
+                max-width: 70%
+            input
+                outline: none
+                border: 2px solid #ededed
+                border-radius: 5px
+                padding: 3px 5px
+                transition: 0.3s
+
+            &-error
+                color: red
+                font-size: 12px
