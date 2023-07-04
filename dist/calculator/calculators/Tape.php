@@ -40,9 +40,32 @@ class Tape
         /** Дополнительные работы и услуги */
         $additional_expenses['additional_work'] = $this->calculateAdditionalWork($additional_expenses['additional_work'], $additional_expenses['works']['total_cost'], $additional_expenses['materials']['total_cost'], $additional_expenses['overhead_transport']['total_cost']);
 
+        /** Подсчитываем общую сумму за все работы */
+        $total =  numberFormat($additional_expenses['works']['total_cost'] + $additional_expenses['materials']['total_cost'] +  $additional_expenses['overhead_transport']['total_cost'] + $additional_expenses['additional_work']['total_cost']);
+
+        /** форматируем все столбцы в нужный формат */
+        foreach ($additional_expenses as $key => $additional_expense) {
+            // Если сумма равна 0 тогда удалить и не выводить данные
+            if ($additional_expenses[$key]['total_cost'] == 0) {
+                unset($additional_expenses[$key]);
+            } else {
+                $additional_expenses[$key]['total_cost'] = numberFormat($additional_expenses[$key]['total_cost']);
+
+                foreach ($additional_expenses[$key]['options'] as $option_key => $option_value) {
+                    if ($additional_expenses[$key]['options'][$option_key]['cost'] == 0) {
+                        unset($additional_expenses[$key]['options'][$option_key]);
+                    } else {
+                        $additional_expenses[$key]['options'][$option_key]['quantity'] = numberFormat($additional_expenses[$key]['options'][$option_key]['quantity']);
+                        $additional_expenses[$key]['options'][$option_key]['price'] = numberFormat($additional_expenses[$key]['options'][$option_key]['price']);
+                        $additional_expenses[$key]['options'][$option_key]['cost'] = numberFormat($additional_expenses[$key]['options'][$option_key]['cost']);
+                    }
+                }
+            }
+        }
+
         return [
             /** Итого по ленте */
-            'total' => $additional_expenses['works']['total_cost'] + $additional_expenses['materials']['total_cost'] +  $additional_expenses['overhead_transport']['total_cost'] + $additional_expenses['additional_work']['total_cost'],
+            'total' => $total,
             /** Расчеты по дополнительным затратам */
             'additional_expenses' => $additional_expenses
         ];

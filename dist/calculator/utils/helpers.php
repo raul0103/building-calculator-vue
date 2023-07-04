@@ -1,5 +1,11 @@
 <?php
 
+function numberFormat($num)
+{
+    $pattern = '/(?<=\d)(?=(\d{3})+(?!\d))|(?<=\.\d{2})0+$/';
+    return  preg_replace($pattern, ' ', $num);
+}
+
 /*** Аналог функции из Excel «ОКРВВЕРХ» ***/
 function roundUp($aNum, $aPrecision = 0)
 {
