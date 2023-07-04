@@ -105,7 +105,7 @@ export default {
       );
       fields.push({
         name: "Ссылка на смету",
-        value: location.href + "calculator/pdf/" + smeta_pdf_filename,
+        value: location.origin + "/calculator/pdf/" + smeta_pdf_filename,
         valid: true,
       });
 
