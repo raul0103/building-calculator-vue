@@ -98,13 +98,13 @@ export default {
 
       axios
         .post(
-          `${this.variables_store.api_url}/calculator/api/controllers/pdf/pdf.php`,
+          `${this.variables_store.api_url}/calculator/api/pdf/pdf.php`,
           form_data
         )
         .then((response) => {
           // Создаем ссылку для скачивания файла
           const download_link = document.createElement("a");
-          download_link.href = `${this.variables_store.api_url}/calculator/api/controllers/pdf/download.php?filename=${response.data.filename}`;
+          download_link.href = `${this.variables_store.api_url}/calculator/api/pdf/download.php?filename=${response.data.filename}`;
           // Добавляем ссылку на страницу и автоматически кликаем по ней
           document.body.appendChild(download_link);
           download_link.click();

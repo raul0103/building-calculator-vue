@@ -1,7 +1,7 @@
 <?php
 
-include $_SERVER['DOCUMENT_ROOT'] . '/calculator/api/utils/helpers.php';
-include $_SERVER['DOCUMENT_ROOT'] . '/calculator/api/config/CalculatorConfig.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/calculator/utils/helpers.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/calculator/config/CalculatorConfig.php';
 
 /**
  * Расчет ленточного фундамента

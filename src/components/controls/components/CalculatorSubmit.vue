@@ -33,19 +33,16 @@ export default {
       }
 
       axios
-        .get(
-          `${this.variables_store.api_url}/calculator/api/controllers/calculator.php`,
-          {
-            params: {
-              form_error: form_error ? 1 : 0,
-              calculator_key_active: calculator_key_active,
-              values:
-                this.fields_store.completed_fields[form_name][
-                  calculator_key_active
-                ],
-            },
-          }
-        )
+        .get(`${this.variables_store.api_url}/calculator/api/calculator.php`, {
+          params: {
+            form_error: form_error ? 1 : 0,
+            calculator_key_active: calculator_key_active,
+            values:
+              this.fields_store.completed_fields[form_name][
+                calculator_key_active
+              ],
+          },
+        })
         .then((response) => {
           this.results_store.setResults(response.data);
         });

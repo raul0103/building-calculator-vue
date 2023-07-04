@@ -27,7 +27,7 @@ export const useCalculatorStore = defineStore("calculator", () => {
   function getCalculatorDataOnPageLoad() {
     const variables_store = useVariablesStore();
     axios
-      .get(`${variables_store.api_url}/calculator/api/controllers/config.php`)
+      .get(`${variables_store.api_url}/calculator/api/config.php`)
       .then((response) => {
         calculator_data.value = response.data.calculator_data;
         calculator_tabs.value = response.data.calculator_tabs;
