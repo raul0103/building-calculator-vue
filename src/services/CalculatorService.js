@@ -33,6 +33,7 @@ export default class CalculatorService {
 
     if (calculate_field_error) {
       console.error("В форме содержатся ошибки");
+      this.results_store.setResults(null);
       return;
     }
 

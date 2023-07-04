@@ -1,8 +1,4 @@
 <template>
-  <!-- {{ calculator_store.calculator_data_active }} -->
-  <!-- {{ fields_store?.checkEmptyRequiredFields(calculator_store.calculator_form_name) }} -->
-  <!-- {{ fields_store?.completed_fields }} -->
-
   <div class="calculator-tab__content">
     <div class="calculator-tab__content-title">
       Расчёт стоимости ({{ calculator_store.calculator_data_active?.title }})
