@@ -1,5 +1,5 @@
 <template>
-  <div class="calculator-result" v-if="results()">
+  <div class="calculator-result" v-if="results">
     <div class="calculator-result__title">Смета</div>
     <div class="calculator-result__table-container">
       <table class="calculator-result__table">
@@ -14,7 +14,7 @@
         </thead>
         <tbody
           class="calculator-result__table__tbody-options"
-          v-for="(expenses, expenses_key) in results().additional_expenses"
+          v-for="(expenses, expenses_key) in results.additional_expenses"
           :key="expenses_key"
         >
           <tr class="calculator-result__table__tbody-options-title">
@@ -44,7 +44,7 @@
         </tbody>
         <tr class="calculator-result__table__total-cost">
           <td colspan="4">Общая стоимость работ с учетом материалов, руб.</td>
-          <td>{{ results().total }} ₽</td>
+          <td>{{ results.total }} ₽</td>
         </tr>
       </table>
     </div>
@@ -60,7 +60,7 @@ export default {
       results_store: useResultsStore(),
     };
   },
-  methods: {
+  computed: {
     results() {
       return this.results_store.getResults();
     },

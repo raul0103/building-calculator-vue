@@ -3,7 +3,7 @@
     <CalculatorTabs />
     <CalculatorTab />
   </div>
-  <CalculatorResult />
+  <TableResult />
   <CalculatorControls />
 
   <!-- Генерация табицы для PDF. С таблицей работает services/DownloadPdfService -->
@@ -13,10 +13,10 @@
 <script>
 import { useCalculatorStore } from "@/stores/calculator.js";
 
-import CalculatorTabs from "@/components/tabs/CalculatorTabs.vue";
-import CalculatorTab from "@/components/tabs/CalculatorTab.vue";
-import CalculatorResult from "@/components/CalculatorResult.vue";
-import CalculatorControls from "@/components/calculator-controls/CalculatorControls.vue";
+import CalculatorTabs from "@/components/calculator-tabs/Tabs.vue";
+import CalculatorTab from "@/components/calculator-tabs/Tab.vue";
+import TableResult from "@/components/calculator-result/TableResult.vue";
+import CalculatorControls from "@/components/calculator-controls/Controls.vue";
 import GenerateTablePdf from "@/components/GenerateTablePdf.vue";
 
 export default {
@@ -32,7 +32,7 @@ export default {
   components: {
     CalculatorTabs,
     CalculatorTab,
-    CalculatorResult,
+    TableResult,
     CalculatorControls,
     GenerateTablePdf,
   },
