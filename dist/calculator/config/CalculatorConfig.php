@@ -87,7 +87,7 @@ class CalculatorConfig
                             [
                                 'key' => 'tape_width',
                                 'title' => 'Ширина ленты',
-                                'default' => 0.25,
+                                'default' => 0.3,
                                 'values' => [0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6],
                                 'unit' => 'м',
                                 'image' => [
