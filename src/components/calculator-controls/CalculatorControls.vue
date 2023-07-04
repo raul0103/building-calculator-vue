@@ -8,7 +8,7 @@
     }"
   >
     <!-- Отображаем если пользователь еще не отправлял заявку -->
-    <CallbackForm v-if="!storage_store.getStorage('callback')" />
+    <CallbackForm v-if="!local_storage_service.getStorage('callback')" />
 
     <button
       v-if="results_store.getResults()"
@@ -24,7 +24,7 @@
 import { useCalculatorStore } from "@/stores/calculator.js";
 import { useFieldsStore } from "@/stores/fields.js";
 import { useResultsStore } from "@/stores/results.js";
-import { useStorageStore } from "@/stores/storage.js";
+import LocalStorageService from "@/services/LocalStorageService.js";
 import DownloadPdfService from "@/services/DownloadPdfService.js";
 import CallbackForm from "./CallbackForm.vue";
 
@@ -35,8 +35,8 @@ export default {
       calculator_store: useCalculatorStore(),
       fields_store: useFieldsStore(),
       results_store: useResultsStore(),
-      storage_store: useStorageStore(),
       download_pdf_service: new DownloadPdfService(),
+      local_storage_service: new LocalStorageService(),
     };
   },
 };

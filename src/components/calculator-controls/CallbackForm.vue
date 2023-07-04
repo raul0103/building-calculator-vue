@@ -36,7 +36,7 @@ import axios from "axios";
 import Inputmask from "inputmask";
 
 import CalculatorService from "@/services/CalculatorService.js";
-import { useStorageStore } from "@/stores/storage.js";
+import LocalStorageService from "@/services/LocalStorageService.js";
 import { useVariablesStore } from "@/stores/variables.js";
 
 export default {
@@ -44,7 +44,7 @@ export default {
     return {
       calculator_service: new CalculatorService(),
       variables_store: useVariablesStore(),
-      storage_store: useStorageStore(),
+      local_storage_service: new LocalStorageService(),
       callback_fields: [
         {
           label: "E-mail",
@@ -108,7 +108,7 @@ export default {
         .then((response) => {
           //Если сообщение отправлено, сохраняем данные в хранилище для дальнейшего использования
           if (response.data.status) {
-            this.storage_store.setStorage({
+            this.local_storage_service.setStorage({
               callback: this.callback_fields.reduce((acc, field) => {
                 acc[field.name] = field.value;
                 return acc;
