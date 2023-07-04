@@ -1,4 +1,6 @@
 <template>
+  <button @click="reset">СБРОСИТЬ</button>
+
   <div class="calculator-tab">
     <CalculatorTabs />
     <CalculatorTab />
@@ -28,7 +30,13 @@ export default {
   mounted() {
     this.calculator_store.getCalculatorDataOnPageLoad();
   },
-  methods: {},
+  methods: {
+    reset() {
+      // Для тестов! Сброс данных отправки формы
+      localStorage.removeItem("calculator-a23nof2cs");
+      location.href = location.href;
+    },
+  },
   components: {
     CalculatorTabs,
     CalculatorTab,
