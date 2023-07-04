@@ -37,6 +37,7 @@ import Inputmask from "inputmask";
 
 import CalculatorService from "@/services/CalculatorService.js";
 import LocalStorageService from "@/services/LocalStorageService.js";
+import DownloadPdfService from "@/services/DownloadPdfService.js";
 import { useVariablesStore } from "@/stores/variables.js";
 
 export default {
@@ -45,6 +46,7 @@ export default {
       calculator_service: new CalculatorService(),
       variables_store: useVariablesStore(),
       local_storage_service: new LocalStorageService(),
+      download_pdf_service: new DownloadPdfService(),
       callback_fields: [
         {
           label: "E-mail",
@@ -81,20 +83,31 @@ export default {
     mask_phone.mask(this.$refs.phone);
   },
   methods: {
-    submit() {
+    async submit() {
       // Проверяем на заполненность поля формы звонка
       if (this.validCallbackFields()) {
-        this.calculator_service.calculate(); // Расчет данных
+        await this.calculator_service.calculate(); // Расчет данных
         this.sendMessage(); // Отправка сообщения менеджеру
       }
     },
 
-    sendMessage() {
+    async sendMessage() {
       const fields = this.callback_fields.map((field) => ({
-        name: field.name,
+        name: field.label,
         value: field.value,
         valid: field.valid,
       }));
+
+      // Создаем PDF сметы и имя файла передает со всеми полями менеджеру
+      const download_pdf = false;
+      const smeta_pdf_filename = await this.download_pdf_service.generatePDF(
+        download_pdf
+      );
+      fields.push({
+        name: "Ссылка на смету",
+        value: location.href + "calculator/pdf/" + smeta_pdf_filename,
+        valid: true,
+      });
 
       let form_data = new FormData();
       form_data.append("fields", JSON.stringify(fields));

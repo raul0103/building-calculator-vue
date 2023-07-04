@@ -19,7 +19,7 @@ export default class CalculatorService {
    *
    * @param check_sent_callback - Проверять отправил ли пользователь обратную форму
    */
-  calculate(check_sent_callback = false) {
+  async calculate(check_sent_callback = false) {
     // Если Стоит проверка отправлена ли форма и она не отправлена тогда остановить скрипт
     if (check_sent_callback) {
       if (!this.local_storage_service.getStorage("callback")) {
@@ -38,7 +38,7 @@ export default class CalculatorService {
     }
 
     const calculator_key_active = this.calculator_store.calculator_key_active;
-    axios
+    await axios
       .get(`${this.variables_store.api_url}/calculator/api/calculator.php`, {
         params: {
           form_error: calculate_field_error ? 1 : 0,
