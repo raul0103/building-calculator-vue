@@ -13,6 +13,7 @@
 
 <script>
 import { useFieldsStore } from "@/stores/fields.js";
+import CalculatorService from "@/services/CalculatorService.js";
 
 export default {
   props: {
@@ -26,6 +27,11 @@ export default {
      * Используется для записи не заполненных обязательных полей в stores/fields
      */
     form_name: { default: "form" },
+  },
+  data() {
+    return {
+      calculator_service: new CalculatorService(),
+    };
   },
   beforeCreate() {
     this.fields_store = useFieldsStore();
@@ -63,6 +69,10 @@ export default {
         e.target.value,
         this.calculator_key_active
       );
+
+      // Отправили данные для расчета, с проверкой отправлена ли была обратная форма
+      const check_sent_callback = true;
+      this.calculator_service.calculate(check_sent_callback);
     },
   },
 };

@@ -3,6 +3,7 @@ import { useCalculatorStore } from "@/stores/calculator.js";
 import { useFieldsStore } from "@/stores/fields.js";
 import { useVariablesStore } from "@/stores/variables.js";
 import { useResultsStore } from "@/stores/results.js";
+import LocalStorageService from "@/services/LocalStorageService.js";
 
 export default class CalculatorService {
   constructor() {
@@ -10,10 +11,22 @@ export default class CalculatorService {
     this.fields_store = useFieldsStore();
     this.variables_store = useVariablesStore();
     this.results_store = useResultsStore();
+    this.local_storage_service = new LocalStorageService();
   }
 
-  // Отправляет данные для расчета
-  calculate() {
+  /**
+   * Отправляет данные для расчета
+   *
+   * @param check_sent_callback - Проверять отправил ли пользователь обратную форму
+   */
+  calculate(check_sent_callback = false) {
+    // Если Стоит проверка отправлена ли форма и она не отправлена тогда остановить скрипт
+    if (check_sent_callback) {
+      if (!this.local_storage_service.getStorage("callback")) {
+        return;
+      }
+    }
+
     const calculate_form_name = this.calculator_store.calculator_form_name;
     const calculate_field_error =
       this.fields_store.checkEmptyRequiredFields(calculate_form_name);
@@ -40,5 +53,3 @@ export default class CalculatorService {
       });
   }
 }
-
-// export default new CalculatorService();

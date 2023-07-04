@@ -10,6 +10,7 @@
 <script>
 import { useFieldsStore } from "@/stores/fields.js";
 import { useImagesStore } from "@/stores/images.js";
+import CalculatorService from "@/services/CalculatorService.js";
 
 export default {
   props: {
@@ -26,6 +27,7 @@ export default {
     return {
       checked: false,
       images_store: useImagesStore(),
+      calculator_service: new CalculatorService(),
     };
   },
   beforeCreate() {
@@ -72,6 +74,10 @@ export default {
           this.images_store.setActiveImage(this.name, this.active_image);
         else this.images_store.removeActiveImage(this.name);
       }
+
+      // Отправили данные для расчета, с проверкой отправлена ли была обратная форма
+      const check_sent_callback = true;
+      this.calculator_service.calculate(check_sent_callback);
     },
   },
 };

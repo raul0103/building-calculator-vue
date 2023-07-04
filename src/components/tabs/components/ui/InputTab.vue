@@ -13,6 +13,7 @@
 
 <script>
 import { useFieldsStore } from "@/stores/fields.js";
+import CalculatorService from "@/services/CalculatorService.js";
 
 export default {
   props: {
@@ -35,6 +36,7 @@ export default {
       /** Данные переменные инициализируются в хуке beforeMount*/
       _value: null,
       required_error: null,
+      calculator_service: new CalculatorService(),
     };
   },
   beforeCreate() {
@@ -84,6 +86,10 @@ export default {
         e.target.value,
         this.calculator_key_active
       );
+
+      // Отправили данные для расчета, с проверкой отправлена ли была обратная форма
+      const check_sent_callback = true;
+      this.calculator_service.calculate(check_sent_callback);
     },
     setEmptyRequiredFields(is_error) {
       this.fields_store.setEmptyRequiredFields(
