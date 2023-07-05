@@ -23,4 +23,10 @@ switch ($_GET['calculator_key_active']) {
         $calculate = new Plate($_GET['values']);
         echo json_encode($calculate->result());
         return;
+
+    case 'plate_grillage_low':
+        include '../calculators/DrenageLow.php';
+        $calculate = new DrenageLow($_GET['values']);
+        echo json_encode($calculate->result());
+        return;
 }
