@@ -9,6 +9,7 @@
 
 ```sh
 npm install
+composer install
 ```
 
 ### Compile and Hot-Reload for Development
