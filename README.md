@@ -1,5 +1,13 @@
 - DEV
   - Корневая папка dist/
+  - В ней же создать .htaccess, так как при разработке фронт будет открыт через один хост а например openserver на другом
+
+```sh
+    Header set Access-Control-Allow-Origin "_"
+    Header set Access-Control-Allow-Headers "_"
+    Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+```
+
 - PROD
   - Перенести директорию dist/calculator на сервер
   - На рабочей странице создать <div id="calculator-app"></div>
