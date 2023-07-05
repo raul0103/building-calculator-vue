@@ -12,7 +12,7 @@
           <li
             v-for="option in calculator_store.calculator_data_active?.config
               .dimensions.options"
-            :key="option.key"
+            :key="calculator_store.calculator_key_active + '_' + option.key"
             class="calculator-tab__content-options__fields-item"
             @mouseenter.self="(e) => hoverOption(option.key, option.image)"
             @mouseleave.self="(e) => hoverOption(option.key, option.image)"
@@ -77,7 +77,7 @@
           <li
             v-for="option in calculator_store.calculator_data_active?.config
               .additionally.options"
-            :key="option.key"
+            :key="calculator_store.calculator_key_active + '_' + option.key"
             class="calculator-tab__content-options__fields-item"
             @mouseenter.self="(e) => hoverOption(option.key, option.image)"
             @mouseleave.self="(e) => hoverOption(option.key, option.image)"
