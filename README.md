@@ -12,16 +12,16 @@ npm install
 composer install
 ```
 
-### Compile and Hot-Reload for Development
-
-```sh
-npm run serve
-```
-
 ### Compile and Minify for Production
 
 ```sh
 npm run build
+```
+
+### Compile and Hot-Reload for Development
+
+```sh
+npm run serve
 ```
 
 ### Vendor PHP
