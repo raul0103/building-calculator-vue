@@ -603,13 +603,211 @@ class CalculatorsData
                 'image' => [
                     'style' => ['', 'position: relative; left: 42px; top: -25px;'],
                     'src' =>  [
-                        'calculator/assets/images/grillagelow/basic_01.png',
-                        'calculator/assets/images/grillagelow/basic_02.png'
+                        'calculator/assets/images/grillageup/basic_01.png',
+                        'calculator/assets/images/grillageup/basic_02.png'
                     ]
                 ],
                 'config' => [
-                    'dimensions' => [],
-                    'additionally' => []
+                    'dimensions' => [
+                        'title' => 'Размеры фундамента:',
+                        "options" => [
+                            [
+                                'key' => 'length',
+                                'title' => 'Длина',
+                                'required' => true,
+                                'placeholder' => 'Длина',
+                                'unit' => 'м',
+                                'image' => [
+                                    'style' => ' left: 0; top: -33px; ',
+                                    'src' => 'calculator/assets/images/grillagelow/param_01.png'
+                                ]
+                            ],
+                            [
+                                'key' => 'width',
+                                'title' => 'Ширина',
+                                'required' => true,
+                                'placeholder' => 'Ширина',
+                                'unit' => 'м',
+                                'image' => [
+                                    'style' => ' left: 0; top: -33px; ',
+                                    'src' => 'calculator/assets/images/grillagelow/param_02.png'
+                                ]
+                            ],
+                            [
+                                'key' => 'plate_thickness',
+                                'title' => 'Толщина плиты',
+                                'default' => 0.25,
+                                'values' => [0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5],
+                                'unit' => 'м',
+                                'image' => [
+                                    'style' => ' left: 0; top: -33px; ',
+                                    'src' => 'calculator/assets/images/grillagelow/param_03.png'
+                                ]
+                            ],
+                            [
+                                'key' => 'plate_area',
+                                'title' => 'Площадь плиты',
+                                'default' => 0,
+                                'unit' => 'м2',
+                                'description' => '(это расчетная величина, если у вас свое значение, подставьте его)',
+                                'image' => [
+                                    'style' => ' left: 0; top: -33px; ',
+                                    'src' => 'calculator/assets/images/grillagelow/param_04.png'
+                                ]
+                            ],
+                            [
+                                'key' => 'foundation_perimeter',
+                                'title' => 'Периметр фундамент',
+                                'default' => 0,
+                                'unit' => 'м.п.',
+                                'description' => '(это расчетная величина, если у вас свое значение, подставьте его)',
+                                'image' => [
+                                    'style' => ' left: 0; top: -33px; ',
+                                    'src' => 'calculator/assets/images/grillagelow/param_05.png'
+                                ]
+                            ],
+                            [
+                                'key' => 'cushion_thickness_1',
+                                'title' => 'Толщина песчаной подушки',
+                                'default' => 0.3,
+                                'values' => [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+                                'unit' => 'м',
+                            ],
+                            [
+                                'key' => 'cushion_thickness_2',
+                                'title' => 'Толщина щебёночной подушки',
+                                'default' => 0,
+                                'values' => [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+                                'unit' => 'м',
+                            ],
+                            [
+                                'key' => 'grillage_length',
+                                'title' => 'Общая длина ростверка',
+                                'default' => 0,
+                                'unit' => 'м.п.',
+                                'description' => '(рассчитывается под все несущие стены и перегородки, если у вас свое значение, подставьте его)',
+
+                            ],
+                            [
+                                'key' => 'grillage_height',
+                                'title' => 'Высота ростверка',
+                                'default' => 0.3,
+                                'values' => [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+                                'unit' => 'м',
+                            ],
+                            [
+                                'key' => 'grillage_width',
+                                'title' => 'Ширина ростверка',
+                                'default' => 0.3,
+                                'values' => [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+                                'unit' => 'м',
+                                'image' => [
+                                    'style' => ' left: 0; top: -33px; ',
+                                    'src' => 'calculator/assets/images/grillagelow/param_10.png'
+                                ]
+                            ],
+                            [
+                                'key' => 'distance_from_cad',
+                                'title' => 'Расстояние от КАД',
+                                'required' => true,
+                                'default' => 25,
+                                'step' => 1,
+                                'unit' => 'км'
+                            ],
+                        ]
+                    ],
+                    'additionally' => [
+                        'title' => 'Размеры фундамента:',
+                        "options" => [
+                            [
+                                'key' => 'additionally_1',
+                                'title' => 'Укладка геомембраны',
+                                'description' => '(используется вместо подбетонного основания)'
+                            ],
+                            [
+                                'key' => 'additionally_2',
+                                'title' => 'Подбетонное основание',
+                                'description' => '(100мм, бетон в7,5)',
+                            ],
+                            [
+                                'key' => 'additionally_3',
+                                'title' => 'Устройство дренажа',
+                                'description' => '(по периметру фундамента)',
+                                'image' => [
+                                    'style' => 'left: 33px; top: -131px;z-index:1',
+                                    'src' => 'calculator/assets/images/grillageup/extra_03.png'
+                                ]
+                            ],
+                            [
+                                'key' => 'additionally_4',
+                                'title' => 'Гидроизоляция подошвы',
+                                'description' => '(рулонная, Технониколь)',
+                                'image' => [
+                                    'style' => 'left: 33px; top: -131px;z-index:1',
+                                    'src' => 'calculator/assets/images/grillageup/extra_04.png'
+                                ]
+                            ],
+                            [
+                                'key' => 'additionally_5',
+                                'title' => 'Утепление подошвы',
+                                'description' => '(Пеноплекс 50мм)',
+                                'image' => [
+                                    'style' => 'left: 33px; top: -131px;z-index:1',
+                                    'src' => 'calculator/assets/images/grillageup/extra_05.png'
+                                ]
+                            ],
+                            [
+                                'key' => 'additionally_6',
+                                'title' => 'Гидроизоляция боковых стенок',
+                                'description' => '(оклеечная, Технониколь)',
+                                'image' => [
+                                    'style' => 'left: 33px; top: -131px;z-index:1',
+                                    'src' => 'calculator/assets/images/grillageup/extra_06.png'
+                                ]
+                            ],
+                            [
+                                'key' => 'additionally_7',
+                                'title' => 'Утепление боковых стенок',
+                                'description' => '(Пеноплекс 50мм)',
+                                'image' => [
+                                    'style' => 'left: 33px; top: -131px;z-index:1',
+                                    'src' => 'calculator/assets/images/grillageup/extra_07.png'
+                                ]
+                            ],
+                            [
+                                'key' => 'additionally_8',
+                                'title' => 'Устройство отмостки',
+                                'description' => '(ширина 1м)',
+                                'image' => [
+                                    'style' => 'left: 33px; top: -131px;z-index:1',
+                                    'src' => 'calculator/assets/images/grillageup/extra_08.png'
+                                ]
+                            ],
+                            [
+                                'key' => 'additionally_9',
+                                'title' => 'Разводка канализации',
+                                'description' => '(система труб d110мм, укладывается в подушку фундамента)',
+                            ],
+                            [
+                                'key' => 'additionally_10',
+                                'title' => 'Обеспечение электричеством',
+                                'description' => '(аренда генератора)',
+                                'image' => [
+                                    'style' => 'left: 33px; top: -131px;z-index:1',
+                                    'src' => 'calculator/assets/images/grillageup/extra_10.png'
+                                ]
+                            ],
+                            [
+                                'key' => 'additionally_11',
+                                'title' => 'Аренда вагончика для проживания бригады',
+                                'image' => [
+                                    'style' => 'left: 33px; top: -131px;z-index:1',
+                                    'src' => 'calculator/assets/images/grillageup/extra_11.png'
+                                ]
+                            ],
+
+                        ]
+                    ]
                 ]
             ],
             'usp' => [
@@ -1113,6 +1311,187 @@ class CalculatorsData
                             'title' => 'Гидроизоляция нижнего ростверка и плиты фундамента, технониколь, 1 слой',
                             'basic_price' => [360],
                             'quantity_coeff' => [2],
+                            'unit' => 'м<sup>2</sup>'
+                        ],
+                        'side_wall_insulation' => [
+                            'title' => 'Утепление боковых стенок фундамента (цоколя), пеноплекс 50мм',
+                            'basic_price' => [600],
+                            'unit' => 'м<sup>2</sup>'
+                        ],
+                        'blind_area_device' => [
+                            'title' => 'Устройство бетонной отмостки',
+                            'basic_price' => [2000],
+                            'unit' => 'м.п.'
+                        ],
+                        'sewer_wiring' => [
+                            'title' => 'Разводка канализационных труб, d110мм',
+                            'basic_price' => [1200],
+                            'unit' => 'м.п.'
+                        ],
+                        'electricity_supply' => [
+                            'title' => 'Аренда генератора (если нет электричества на участке)',
+                            'basic_price' => [6000],
+                            'basic_coeff' => [50000, 800],
+                            'quantity' => 1,
+                            'unit' => 'шт'
+                        ],
+                        'trailer_rental' => [
+                            'title' => 'Аренда вагончика для проживания бригады',
+                            'basic_price' => [7000],
+                            'basic_coeff' => [2, 50, 2, 6000],
+                            'quantity' => 1,
+                            'unit' => 'шт'
+                        ]
+                    ]
+                ]
+            ],
+            'plate_grillage_up' => [
+                'works' => [
+                    'title' => 'Работы',
+                    'options' => [
+                        'breakdown_axes' => [
+                            'title' => 'Планировка, разбивка осей',
+                            'quantity' => 1,
+                            'basic_price' => [6000],
+                            'unit' => 'шт'
+                        ],
+                        'excavation' => [
+                            'title' => 'Земляные работы (разработка котлована механизированным способом, ручная доработка)',
+                            'basic_price' => [300],
+                            'unit' => 'м<sup>3</sup>'
+                        ],
+                        'geotextile_laying' => [
+                            'title' => 'Укладка геотекстиля',
+                            'basic_price' => [20],
+                            'unit' => 'м<sup>3</sup>'
+                        ],
+                        'gravel_pad_device' => [
+                            'title' => 'Устройство песчано-гравийной подушки с послойным уплотнением виброплитой',
+                            'quantity_coeff' => [1.3, 1.3],
+                            'basic_price' => [300],
+                            'unit' => 'м<sup>3</sup>'
+                        ],
+                        'concrete_works' => [
+                            'title' => 'Бетонные работы (выставление опалубки, вязка арматуры, заливка бетона)',
+                            'quantity_coeff' => [1.05],
+                            'basic_price' => [4500],
+                            'unit' => 'м<sup>3</sup>'
+                        ],
+                        'installation_mortgages' => [
+                            'title' => 'Монтаж закладных под воду, электричество и канализацию',
+                            'basic_price' => [2000],
+                            'unit' => 'шт'
+                        ]
+                    ]
+                ],
+                'materials' => [
+                    'title' => 'Материалы',
+                    'options' => [
+                        'sand_delivery' => [
+                            'title' => 'Песок с доставкой',
+                            'basic_price' => [550],
+                            'quantity_coeff' => [1.3],
+                            'unit' => 'м<sup>3</sup>'
+                        ],
+                        'rock' => [
+                            'title' => 'Щебень гр.фр.20-40 с доставкой',
+                            'quantity_coeff' => [1.3],
+                            'basic_price' => [1300],
+                            'unit' => 'м<sup>3</sup>'
+                        ],
+                        'geotextile' => [
+                            'title' => 'Геотекстиль',
+                            'quantity_coeff' => [1.3],
+                            'basic_price' => [35],
+                            'unit' => 'м<sup>2</sup>'
+                        ],
+                        'technical_film' => [
+                            'title' => 'Пленка техническая',
+                            'quantity_coeff' =>  [2, 1.2],
+                            'basic_price' => [15],
+                            'unit' => 'м<sup>2</sup>'
+                        ],
+                        'formwork' => [
+                            'title' => 'Опалубка, пиломатериалы',
+                            'quantity_coeff' => [1.2],
+                            'basic_price' => [8500],
+                            'unit' => 'м<sup>3</sup>'
+                        ],
+                        'armature_a500С_d12mm' => [
+                            'title' => 'Арматура А500С d12мм',
+                            'quantity_coeff' => [0.888, 1.25, 1000],
+                            'basic_price' => [41200],
+                            'unit' => 'т'
+                        ],
+                        'armature_a500С_d8mm' => [
+                            'title' => 'Арматура А500С d8мм',
+                            'quantity_coeff' => [0.495, 1.2, 1000],
+                            'basic_price' => [44900],
+                            'unit' => 'т'
+                        ],
+                        'commercial_concrete' => [
+                            'title' => 'Бетон товарный В22,5М300П3 с доставкой',
+                            'basic_coeff' => [30, 450, 15],
+                            'quantity_coeff' => [1.05],
+                            'basic_price' => [3350],
+                            'unit' => 'м<sup>3</sup>'
+                        ]
+                    ]
+                ],
+                'overhead_transport' => [
+                    'title' => 'Накладные и транспортные расходы',
+                    'options' => [
+                        'overhead' => [
+                            'title' => 'Накладные и прочие расходы (фиксаторы, саморезы, гвозди, подставки, вязальная проволока и прочее)',
+                            'basic_coeff' => [0.05],
+                            'quantity' => 1,
+                            'unit' => 'шт'
+                        ],
+                        'transport' => [
+                            'title' => 'Транспортные и логистические расходы',
+                            'basic_coeff' => [2, 45, 0.02],
+                            'basic_price' => [6000],
+                            'quantity' => 1,
+                            'unit' => 'шт'
+                        ]
+                    ]
+                ],
+                'additional_work' => [
+                    'title' => 'Дополнительные работы и услуги',
+                    'options' => [
+                        'geomembrane_installation' => [
+                            'title' => 'Укладка геомембраны Planter',
+                            'basic_price' => [120],
+                            'quantity_coeff' => [0.1],
+                            'unit' => 'м<sup>2</sup>'
+                        ],
+                        'concrete_foundation_device' => [
+                            'title' => 'Устройство подбетонного основания, 100мм',
+                            'basic_price' => [2700],
+                            'basic_coeff' => [15, 0.1, 200],
+                            'quantity_coeff' => [0.1],
+                            'unit' => 'м<sup>2</sup>'
+                        ],
+                        'drainage_device' => [
+                            'title' => 'Устройство дренажа по периметру фундамента с отводом в сторону на 10м',
+                            'basic_price' => [1100],
+                            'unit' => 'м.п.'
+                        ],
+                        'foundation_waterproofing_insulation' => [
+                            'title' => 'Гидроизоляция подошвы фундамента, технониколь, 1 слой',
+                            'basic_price' => [310],
+                            'quantity_coeff' => [0.1],
+                            'unit' => 'м<sup>2</sup>'
+                        ],
+                        'foundation_insulation' => [
+                            'title' => 'Утепление подошвы фундамента, пеноплекс 50мм',
+                            'basic_price' => [600],
+                            'quantity_coeff' => [0.1],
+                            'unit' => 'м<sup>2</sup>'
+                        ],
+                        'foundation_waterproofing_plinth' => [
+                            'title' => 'Гидроизоляция боковых стенок фундамента (цоколя), технониколь, 1 слой',
+                            'basic_price' => [360],
                             'unit' => 'м<sup>2</sup>'
                         ],
                         'side_wall_insulation' => [
