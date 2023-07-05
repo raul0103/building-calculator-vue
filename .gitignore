@@ -33,3 +33,4 @@ composer.lock
 dist/calculator/assets
 dist/calculator/vendor
 dist/calculator/pdf
+dist/calculator/.env

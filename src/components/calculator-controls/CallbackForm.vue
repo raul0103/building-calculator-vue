@@ -39,12 +39,14 @@ import CalculatorService from "@/services/CalculatorService.js";
 import LocalStorageService from "@/services/LocalStorageService.js";
 import DownloadPdfService from "@/services/DownloadPdfService.js";
 import { useVariablesStore } from "@/stores/variables.js";
+import { useCalculatorStore } from "@/stores/calculator.js";
 
 export default {
   data() {
     return {
-      calculator_service: new CalculatorService(),
+      calculator_store: useCalculatorStore(),
       variables_store: useVariablesStore(),
+      calculator_service: new CalculatorService(),
       local_storage_service: new LocalStorageService(),
       download_pdf_service: new DownloadPdfService(),
       callback_fields: [
@@ -93,7 +95,7 @@ export default {
 
     async sendMessage() {
       const fields = this.callback_fields.map((field) => ({
-        name: field.label,
+        name: field.name,
         value: field.value,
         valid: field.valid,
       }));
@@ -104,8 +106,15 @@ export default {
         download_pdf
       );
       fields.push({
-        name: "Ссылка на смету",
+        name: "pdf",
         value: location.origin + "/calculator/pdf/" + smeta_pdf_filename,
+        valid: true,
+      });
+
+      // Добавили тип калькулятора
+      fields.push({
+        name: "type",
+        value: this.calculator_store.calculator_key_active,
         valid: true,
       });
 

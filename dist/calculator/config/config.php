@@ -1,5 +1,7 @@
 <?php
 
-define('MAIL_FROM', '');
-define('MAIL_TO', 'rshakurov95@mail.ru');
-define('SITE_NAME', 'Название сайта');
+/**
+ * true - Включает колбэк сообщений /calculator/callbacks/send-message-callback.php
+ * false - сообщения отправляются на почту указанную в .ENV
+ */
+define('MESSAGE_CALLBACK', false);
