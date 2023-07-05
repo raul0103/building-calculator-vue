@@ -24,8 +24,6 @@ npm run build
 npm run serve
 ```
 
-Если при serve webpack не создаст в dist/calculator/assets/index.html Создать в ручную с путями до css и js
-
 ### Vendor PHP
 
 ```sh

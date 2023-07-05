@@ -76,6 +76,10 @@ module.exports = {
           from: "src/assets/images",
           to: "images",
         },
+        {
+          from: "./index.html",
+          to: "index.html",
+        },
       ],
     }),
   ],
