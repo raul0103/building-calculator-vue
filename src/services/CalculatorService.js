@@ -50,6 +50,7 @@ export default class CalculatorService {
         },
       })
       .then((response) => {
+        // console.log('calculate',response.data);
         this.results_store.setResults(response.data);
       });
   }

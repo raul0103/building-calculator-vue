@@ -8,12 +8,12 @@ include $_SERVER['DOCUMENT_ROOT'] . '/calculator/calculators/CalculatorsData.php
  */
 class Tape
 {
-    public $values;
-    public $main_data;
+    public $form_values; // Данные из формы
+    public $main_data; // Основные данные по которым будут проводиться различные расчеты
 
-    public function __construct($values)
+    public function __construct($form_values)
     {
-        $this->values = $values;
+        $this->form_values = $form_values;
     }
 
     public function result()
@@ -75,15 +75,15 @@ class Tape
     {
         /* длина ленты */
         //TODO отдать на фронт данные в плейсхолдер
-        $this->main_data['total_length'] =  $this->values['tape_length'];
+        $this->main_data['total_length'] =  $this->form_values['tape_length'];
         if (empty($this->main_data['total_length']) || $this->main_data['total_length'] == 0) {
-            if ($this->values['length'] > 0 && $this->values['width'] > 0) {
-                if ($this->values['length'] <= 3 || $this->values['width'] <= 3) {
-                    $this->main_data['total_length'] = ($this->values['length'] + $this->values['width']) * 2;
-                } else if (($this->values['length'] + $this->values['width']) <= 12) {
-                    $this->main_data['total_length'] = $this->values['length'] * 3 + $this->values['width'] * 2;
+            if ($this->form_values['length'] > 0 && $this->form_values['width'] > 0) {
+                if ($this->form_values['length'] <= 3 || $this->form_values['width'] <= 3) {
+                    $this->main_data['total_length'] = ($this->form_values['length'] + $this->form_values['width']) * 2;
+                } else if (($this->form_values['length'] + $this->form_values['width']) <= 12) {
+                    $this->main_data['total_length'] = $this->form_values['length'] * 3 + $this->form_values['width'] * 2;
                 } else {
-                    $this->main_data['total_length'] = ceil($this->values['length'] * $this->values['width'] * 0.75);
+                    $this->main_data['total_length'] = ceil($this->form_values['length'] * $this->form_values['width'] * 0.75);
                 }
             } else {
                 $this->main_data['total_length'] = 0;
@@ -92,59 +92,59 @@ class Tape
 
         /* периметр фундамента */
         //TODO отдать на фронт данные в плейсхолдер
-        $this->main_data['perimetr'] =  $this->values['foundation_perimeter'];
+        $this->main_data['perimetr'] =  $this->form_values['foundation_perimeter'];
         if (empty($this->main_data['perimetr']) || $this->main_data['perimetr'] == 0) {
-            if ($this->values['length'] > 0 && $this->values['width'] > 0) {
-                $this->main_data['perimetr'] = ($this->values['length'] + $this->values['width']) * 2;
+            if ($this->form_values['length'] > 0 && $this->form_values['width'] > 0) {
+                $this->main_data['perimetr'] = ($this->form_values['length'] + $this->form_values['width']) * 2;
             } else {
                 $this->main_data['perimetr'] = 0;
             }
         }
 
         /* расстояние от КАД */
-        $this->main_data['distance_from_cad'] =  $this->values['distance_from_cad'];
+        $this->main_data['distance_from_cad'] =  $this->form_values['distance_from_cad'];
 
         /*** Внутренние данные ***/
         /* объём бетона */
-        $this->main_data['concrete_volume'] = $this->values['tape_height'] * $this->values['tape_width'] * $this->main_data['total_length'];
+        $this->main_data['concrete_volume'] = $this->form_values['tape_height'] * $this->form_values['tape_width'] * $this->main_data['total_length'];
 
         /* площадь подошвы фундамента */
-        $this->main_data['base_square'] = $this->values['tape_width'] * $this->main_data['total_length'];
+        $this->main_data['base_square'] = $this->form_values['tape_width'] * $this->main_data['total_length'];
 
         /* Площадь боковых стенок */
-        $this->main_data['side_square'] = $this->main_data['total_length'] * $this->values['tape_height'] * 2;
+        $this->main_data['side_square'] = $this->main_data['total_length'] * $this->form_values['tape_height'] * 2;
 
         /* ширина траншеи */
-        $this->main_data['trench_width'] = $this->values['tape_width'] + 0.3;
+        $this->main_data['trench_width'] = $this->form_values['tape_width'] + 0.3;
 
         /* объём траншеи */
-        $this->main_data['trench_volume'] = $this->main_data['total_length'] * $this->main_data['trench_width'] *  $this->values['tape_height'];
+        $this->main_data['trench_volume'] = $this->main_data['total_length'] * $this->main_data['trench_width'] *  $this->form_values['tape_height'];
 
         /* толщина подушки */
         $this->main_data['pillow_thickness'] = 0.3;
 
         /* кол-во горизонтальных хлыстов */
         switch ('true') {
-            case ($this->values['tape_height'] <= 0.5):
+            case ($this->form_values['tape_height'] <= 0.5):
                 $n1 = 2;
                 break;
-            case ($this->values['tape_height'] > 0.5 && $this->values['tape_height'] <= 0.9):
+            case ($this->form_values['tape_height'] > 0.5 && $this->form_values['tape_height'] <= 0.9):
                 $n1 = 3;
                 break;
-            case ($this->values['tape_height'] > 0.9 && $this->values['tape_height'] <= 1.3):
+            case ($this->form_values['tape_height'] > 0.9 && $this->form_values['tape_height'] <= 1.3):
                 $n1 = 4;
                 break;
-            case ($this->values['tape_height'] > 1.3 && $this->values['tape_height'] <= 1.6):
+            case ($this->form_values['tape_height'] > 1.3 && $this->form_values['tape_height'] <= 1.6):
                 $n1 = 5;
                 break;
             default:
                 $n1 = 6;
         }
         switch ('true') {
-            case ($this->values['tape_width'] <= 0.4):
+            case ($this->form_values['tape_width'] <= 0.4):
                 $n2 = 2;
                 break;
-            case ($this->values['tape_width'] > 0.4 && $this->values['tape_width'] <= 0.7):
+            case ($this->form_values['tape_width'] > 0.4 && $this->form_values['tape_width'] <= 0.7):
                 $n2 = 3;
                 break;
             default:
@@ -155,13 +155,13 @@ class Tape
         $this->main_data['a500_whip'] = $this->main_data['total_length'] * ($n1 * $n2);
 
         /* арматура А500С (перемычки) */
-        $this->main_data['a500_bridge'] = ceil($this->main_data['total_length'] / 0.3) * ($this->values['tape_height'] * 2 + $this->values['tape_width'] * 3);
+        $this->main_data['a500_bridge'] = ceil($this->main_data['total_length'] / 0.3) * ($this->form_values['tape_height'] * 2 + $this->form_values['tape_width'] * 3);
 
         /* опалубка (щиты) */
-        $this->main_data['desk_shield'] = $this->main_data['total_length'] * $this->values['tape_height'] * 2 * 0.04;
+        $this->main_data['desk_shield'] = $this->main_data['total_length'] * $this->form_values['tape_height'] * 2 * 0.04;
 
         /* опалубка (укрепление) */
-        $this->main_data['desk_holder'] = $this->main_data['total_length'] * 2 * ($this->values['tape_height'] + 2 + 1.4) * 0.1 * 0.025;
+        $this->main_data['desk_holder'] = $this->main_data['total_length'] * 2 * ($this->form_values['tape_height'] + 2 + 1.4) * 0.1 * 0.025;
 
         /* дренаж, длина */
         $this->main_data['drainage_length'] = $this->main_data['perimetr'] + 15;
@@ -170,7 +170,7 @@ class Tape
         $this->main_data['embedded_fittings'] = 3;
 
         /* разводка канализации под фундаментом */
-        $this->main_data['interconnection'] = $this->values['length'] + $this->values['width'];
+        $this->main_data['interconnection'] = $this->form_values['length'] + $this->form_values['width'];
     }
 
     protected function calculateWorks($works)
@@ -286,32 +286,32 @@ class Tape
         /* Устройство дренажа по периметру фундамента с отводом в сторону на 10м */
         $additional_work_options['drainage_device']['quantity'] = $this->main_data['drainage_length'];
         $additional_work_options['drainage_device']['price'] = $additional_work_options['drainage_device']['basic_price'][0];
-        $additional_work_options['drainage_device']['cost'] = ($this->values['drainage_device'] === 'true') ? $additional_work_options['drainage_device']['quantity'] * $additional_work_options['drainage_device']['price'] : 0;
+        $additional_work_options['drainage_device']['cost'] = ($this->form_values['drainage_device'] === 'true') ? $additional_work_options['drainage_device']['quantity'] * $additional_work_options['drainage_device']['price'] : 0;
 
         /* Гидроизоляция подошвы и боковых стенок фундамента, технониколь, 1 слой */
         $additional_work_options['foundation_waterproofing']['quantity'] = $this->main_data['base_square'] + $this->main_data['side_square'];
         $additional_work_options['foundation_waterproofing']['price'] = $additional_work_options['foundation_waterproofing']['basic_price'][0];
-        $additional_work_options['foundation_waterproofing']['cost'] = ($this->values['foundation_waterproofing'] === 'true') ? $additional_work_options['foundation_waterproofing']['quantity'] * $additional_work_options['foundation_waterproofing']['price'] : 0;
+        $additional_work_options['foundation_waterproofing']['cost'] = ($this->form_values['foundation_waterproofing'] === 'true') ? $additional_work_options['foundation_waterproofing']['quantity'] * $additional_work_options['foundation_waterproofing']['price'] : 0;
 
         /* Утепление фундамента (по периметру), пеноплекс 50мм */
-        $additional_work_options['foundation_insulation']['quantity'] = roundUp($this->values['tape_height'] * $this->main_data['perimetr'], 0);
+        $additional_work_options['foundation_insulation']['quantity'] = roundUp($this->form_values['tape_height'] * $this->main_data['perimetr'], 0);
         $additional_work_options['foundation_insulation']['price'] = $additional_work_options['foundation_insulation']['basic_price'][0];
-        $additional_work_options['foundation_insulation']['cost'] = ($this->values['foundation_insulation'] === 'true') ? $additional_work_options['foundation_insulation']['quantity'] * $additional_work_options['foundation_insulation']['price'] : 0;
+        $additional_work_options['foundation_insulation']['cost'] = ($this->form_values['foundation_insulation'] === 'true') ? $additional_work_options['foundation_insulation']['quantity'] * $additional_work_options['foundation_insulation']['price'] : 0;
 
         /* Устройство бетонной отмостки */
         $additional_work_options['blind_area_device']['quantity'] = $this->main_data['perimetr'];
         $additional_work_options['blind_area_device']['price'] = $additional_work_options['blind_area_device']['basic_price'][0];
-        $additional_work_options['blind_area_device']['cost'] = ($this->values['blind_area_device'] === 'true') ? $additional_work_options['blind_area_device']['quantity'] * $additional_work_options['blind_area_device']['price'] : 0;
+        $additional_work_options['blind_area_device']['cost'] = ($this->form_values['blind_area_device'] === 'true') ? $additional_work_options['blind_area_device']['quantity'] * $additional_work_options['blind_area_device']['price'] : 0;
 
         /* Разводка канализационных труб, d110мм */
         $additional_work_options['sewer_wiring']['quantity'] = $this->main_data['interconnection'];
         $additional_work_options['sewer_wiring']['price'] = $additional_work_options['sewer_wiring']['basic_price'][0];
-        $additional_work_options['sewer_wiring']['cost'] = ($this->values['sewer_wiring'] === 'true') ? $additional_work_options['sewer_wiring']['quantity'] * $additional_work_options['sewer_wiring']['price'] : 0;
+        $additional_work_options['sewer_wiring']['cost'] = ($this->form_values['sewer_wiring'] === 'true') ? $additional_work_options['sewer_wiring']['quantity'] * $additional_work_options['sewer_wiring']['price'] : 0;
 
         /* Монтаж закладных под воду, электричество и канализацию */
         $additional_work_options['installation_mortgages']['quantity'] = $this->main_data['embedded_fittings'];
         $additional_work_options['installation_mortgages']['price'] = $additional_work_options['installation_mortgages']['basic_price'][0];
-        $additional_work_options['installation_mortgages']['cost'] = ($this->values['installation_mortgages'] === 'true') ? $additional_work_options['installation_mortgages']['quantity'] * $additional_work_options['installation_mortgages']['price'] : 0;
+        $additional_work_options['installation_mortgages']['cost'] = ($this->form_values['installation_mortgages'] === 'true') ? $additional_work_options['installation_mortgages']['quantity'] * $additional_work_options['installation_mortgages']['price'] : 0;
 
         /* Аренда генератора (если нет электричества на участке) */
         $additional_work_options['electricity_supply']['price'] = roundUp($additional_work_options['electricity_supply']['basic_price'][0] + (
@@ -325,11 +325,11 @@ class Tape
                     //  $additional_work_options['electricity_supply']['cost']
                 )
             ) / $additional_work_options['electricity_supply']['basic_coeff'][0]) * $additional_work_options['electricity_supply']['basic_coeff'][1], -2);
-        $additional_work_options['electricity_supply']['cost'] = ($this->values['electricity_supply'] === 'true') ? $additional_work_options['electricity_supply']['quantity'] * $additional_work_options['electricity_supply']['price'] : 0;
+        $additional_work_options['electricity_supply']['cost'] = ($this->form_values['electricity_supply'] === 'true') ? $additional_work_options['electricity_supply']['quantity'] * $additional_work_options['electricity_supply']['price'] : 0;
 
         /* Аренда вагончика для проживания бригады */
         $additional_work_options['trailer_rental']['price'] = ($additional_work_options['trailer_rental']['basic_price'][0] + $this->main_data['distance_from_cad'] * $additional_work_options['trailer_rental']['basic_coeff'][0] * $additional_work_options['trailer_rental']['basic_coeff'][1]) * $additional_work_options['trailer_rental']['basic_coeff'][2] + $additional_work_options['trailer_rental']['basic_coeff'][3];
-        $additional_work_options['trailer_rental']['cost'] = ($this->values['trailer_rental'] === 'true') ? $additional_work_options['trailer_rental']['quantity'] * $additional_work_options['trailer_rental']['price'] : 0;
+        $additional_work_options['trailer_rental']['cost'] = ($this->form_values['trailer_rental'] === 'true') ? $additional_work_options['trailer_rental']['quantity'] * $additional_work_options['trailer_rental']['price'] : 0;
 
         /* Итого по доп.работам */
         $additional_work['total_cost'] = countParamsTotalCost($additional_work_options);

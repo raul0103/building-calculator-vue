@@ -17,4 +17,10 @@ switch ($_GET['calculator_key_active']) {
         $calculate = new Tape($_GET['values']);
         echo json_encode($calculate->result());
         return;
+        /** Расчет плиты */
+    case 'plate':
+        include '../calculators/Plate.php';
+        $calculate = new Plate($_GET['values']);
+        echo json_encode($calculate->result());
+        return;
 }
