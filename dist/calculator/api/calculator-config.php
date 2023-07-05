@@ -5,9 +5,9 @@
  */
 
 include '../utils/cors.php';
-include '../config/CalculatorConfig.php';
+include '../calculators/CalculatorsData.php';
 
-$calculator_config = new CalculatorConfig();
+$calculator_config = new CalculatorsData();
 
 // Данные для табов
 $output['calculator_tabs']  = $calculator_config->getTypesForTabs();

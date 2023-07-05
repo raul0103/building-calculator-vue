@@ -1,7 +1,7 @@
 <?php
 
 include $_SERVER['DOCUMENT_ROOT'] . '/calculator/utils/helpers.php';
-include $_SERVER['DOCUMENT_ROOT'] . '/calculator/config/CalculatorConfig.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/calculator/calculators/CalculatorsData.php';
 
 /**
  * Расчет ленточного фундамента
@@ -28,8 +28,8 @@ class Tape
          * Данные для сметы
          * Подтягиваем конфиг по дополнительным затратам
          */
-        $calculator_config = new CalculatorConfig();
-        $additional_expenses = $calculator_config->getAdditionalExpenses('tape');
+        $calculators_data = new CalculatorsData();
+        $additional_expenses = $calculators_data->getAdditionalExpenses('tape');
 
         /** Работы */
         $additional_expenses['works'] = $this->calculateWorks($additional_expenses['works']);
