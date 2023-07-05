@@ -74,4 +74,31 @@ export default class DownloadPdfService {
         console.error("Ошибка при генерации и сохранении PDF:", error);
       });
   }
+
+  /** Отправит PDF сметы на почту пользователю */
+  async sendPdfToUserEmail() {
+    const smeta_pdf_name = await this.generatePDF(false);
+    let form_data = new FormData();
+    form_data.append("smeta_pdf_name", smeta_pdf_name);
+    form_data.append("user_email", smeta_pdf_name);
+
+    axios
+      .post(
+        `${this.variables_store.api_url}/calculator/api/message/send-user.php`,
+        form_data
+      )
+      .then((response) => {
+        if (response.data.status) {
+          console.log("Сообщение пользователю отправено");
+        } else {
+          console.error("Ошибка при отправке сообщения на почту пользователя");
+        }
+      })
+      .catch((error) => {
+        console.error(
+          "Ошибка при отправке сообщения на почту пользователя: ",
+          error
+        );
+      });
+  }
 }

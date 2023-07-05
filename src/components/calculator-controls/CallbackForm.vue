@@ -27,7 +27,7 @@
         >
       </div>
     </div>
-    <button class="calculator-button-primary">Получить подробную смету</button>
+    <ButtonPrimary :pulse="true">Получить подробную смету</ButtonPrimary>
   </form>
 </template>
 
@@ -35,6 +35,7 @@
 import axios from "axios";
 import Inputmask from "inputmask";
 
+import ButtonPrimary from "@/components/ui/buttons/primary";
 import CalculatorService from "@/services/CalculatorService.js";
 import LocalStorageService from "@/services/LocalStorageService.js";
 import DownloadPdfService from "@/services/DownloadPdfService.js";
@@ -42,6 +43,7 @@ import { useVariablesStore } from "@/stores/variables.js";
 import { useCalculatorStore } from "@/stores/calculator.js";
 
 export default {
+  components: { ButtonPrimary },
   data() {
     return {
       calculator_store: useCalculatorStore(),
@@ -124,14 +126,14 @@ export default {
       // Отправили сообщение менеджеру
       axios
         .post(
-          `${this.variables_store.api_url}/calculator/api/send-message.php`,
+          `${this.variables_store.api_url}/calculator/api/message/send-manager.php`,
           form_data
         )
         .then((response) => {
           //Если сообщение отправлено, сохраняем данные в хранилище для дальнейшего использования
           if (response.data.status) {
             this.local_storage_service.setStorage({
-              callback: this.callback_fields.reduce((acc, field) => {
+              "callback-form": this.callback_fields.reduce((acc, field) => {
                 acc[field.name] = field.value;
                 return acc;
               }, {}),

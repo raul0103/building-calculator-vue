@@ -63,7 +63,7 @@
     <!--  Показываем уведомление только если пользователь отправил форму и нет результатов -->
     <Transition>
       <div
-        v-if="!results && local_storage_service.getStorage('callback')"
+        v-if="!results && local_storage_service.getStorage('callback-form')"
         class="calculator-result__board"
       >
         Заполните обязательные поля

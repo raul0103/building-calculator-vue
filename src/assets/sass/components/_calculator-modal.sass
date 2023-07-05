@@ -1,0 +1,46 @@
+.calculator-modal
+    position: fixed
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    display: flex
+    align-items: center
+    justify-content: center
+    background-color: rgba(0, 0, 0, 0.5)
+    z-index: 99999
+
+    &__content
+        background-color: #fff
+        padding: 20px
+        border-radius: 5px
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3)
+        z-index: 1
+
+    &__background
+        position: fixed
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        background-color: rgba(0, 0, 0, 0.5)
+
+    &__button
+        border: none
+        padding: 5px 10px
+        cursor: pointer
+        transition: $fast-transition
+        border-radius: 5px
+        color: #fff
+        &.modal-btn-close
+            background: #969696
+        &.modal-btn-submit
+            background: $main-color-medium
+        &:hover
+            opacity: .7
+
+    &__footer
+        margin-top: 15px
+        display: flex
+        gap: 5px
+        justify-content: end

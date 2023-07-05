@@ -22,7 +22,7 @@ export default class CalculatorService {
   async calculate(check_sent_callback = false) {
     // Если Стоит проверка отправлена ли форма и она не отправлена тогда остановить скрипт
     if (check_sent_callback) {
-      if (!this.local_storage_service.getStorage("callback")) {
+      if (!this.local_storage_service.getStorage("callback-form")) {
         return;
       }
     }
@@ -32,7 +32,7 @@ export default class CalculatorService {
       this.fields_store.checkEmptyRequiredFields(calculate_form_name);
 
     if (calculate_field_error) {
-      console.error("В форме содержатся ошибки");
+      console.warn("В форме содержатся ошибки");
       this.results_store.setResults(null);
       return;
     }

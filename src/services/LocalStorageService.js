@@ -20,8 +20,16 @@ export default class LocalStorageService {
     }
   }
 
-  setStorage(data) {
+  setStorage(data, key = null) {
     const value = JSON.stringify(data);
-    localStorage.setItem(this.storage_key, value);
+    if (key) {
+      const storage_data = this.getStorage();
+      if (storage_data[key]) {
+        storage_data[key] = data;
+        this.setStorage(storage_data);
+      }
+    } else {
+      localStorage.setItem(this.storage_key, value);
+    }
   }
 }
