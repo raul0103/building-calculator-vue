@@ -93,7 +93,7 @@ export default {
         storage_data.email = this.user_email;
         this.local_storage_service.setStorage(storage_data, "callback-form");
 
-        this.download_pdf_service.sendPdfToUserEmail();
+        this.download_pdf_service.sendPdfToUserEmail(this.user_email);
         this.modal_open = false;
       }
     },

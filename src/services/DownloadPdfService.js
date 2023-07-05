@@ -76,11 +76,11 @@ export default class DownloadPdfService {
   }
 
   /** Отправит PDF сметы на почту пользователю */
-  async sendPdfToUserEmail() {
+  async sendPdfToUserEmail(user_email) {
     const smeta_pdf_name = await this.generatePDF(false);
     let form_data = new FormData();
     form_data.append("smeta_pdf_name", smeta_pdf_name);
-    form_data.append("user_email", smeta_pdf_name);
+    form_data.append("user_email", user_email);
 
     axios
       .post(
