@@ -23,7 +23,8 @@ class CalculatorsData
             'tape' => [
                 'title' => 'Лента',
                 'image' => [
-                    'style' => ['', 'position: relative; left: 42px; top: -25px;'],
+                    // 'style' => ['', 'position: relative; left: 42px; top: -25px;'],
+                    'style' => ['', ''],
                     'src' =>  [
                         'calculator/assets/images/tape/basic_01.png',
                         'calculator/assets/images/tape/basic_02.png'
@@ -198,7 +199,8 @@ class CalculatorsData
             'plate' => [
                 'title' => 'Плита',
                 'image' => [
-                    'style' => ['position: relative; left: -3px; top: -10px;', 'position: relative; left: 7px; top: -4px;'],
+                    // 'style' => ['position: relative; left: -3px; top: -10px;', 'position: relative; left: 7px; top: -4px;'],
+                    'style' => ['', ''],
                     'src' =>  [
                         'calculator/assets/images/plate/basic_01.png',
                         'calculator/assets/images/plate/basic_02.png'
@@ -399,7 +401,8 @@ class CalculatorsData
             'plate_grillage_low' => [
                 'title' => 'Плита с нижним ростверком',
                 'image' => [
-                    'style' => ['', 'position: relative; left: 42px; top: -25px;'],
+                    // 'style' => ['', 'position: relative; left: 42px; top: -25px;'],
+                    'style' => ['', ''],
                     'src' =>  [
                         'calculator/assets/images/grillagelow/basic_01.png',
                         'calculator/assets/images/grillagelow/basic_02.png'
@@ -601,7 +604,8 @@ class CalculatorsData
             'plate_grillage_up' => [
                 'title' => 'Плита с верхним ростверком',
                 'image' => [
-                    'style' => ['', 'position: relative; left: 42px; top: -25px;'],
+                    // 'style' => ['', 'position: relative; left: 42px; top: -25px;'],
+                    'style' => ['', ''],
                     'src' =>  [
                         'calculator/assets/images/grillageup/basic_01.png',
                         'calculator/assets/images/grillageup/basic_02.png'
@@ -813,15 +817,149 @@ class CalculatorsData
             'usp' => [
                 'title' => 'УШП',
                 'image' => [
-                    'style' => ['', 'position: relative; left: 42px; top: -25px;'],
+                    // 'style' => ['', 'position: relative; left: 42px; top: -25px;'],
+                    'style' => ['', ''],
                     'src' =>  [
                         'calculator/assets/images/usp/basic_01.png',
                         'calculator/assets/images/usp/basic_02.png'
                     ]
                 ],
                 'config' => [
-                    'dimensions' => [],
-                    'additionally' => []
+                    // Размеры
+                    'dimensions' => [
+                        'title' => 'Размеры фундамента:',
+                        'options' => [
+                            [
+                                'key' => 'length',
+                                'title' => 'Длина',
+                                'required' => true,
+                                'placeholder' => 'Длина',
+                                'unit' => 'м',
+                                'image' => [
+                                    'style' => ' left: 0; top: -33px; ',
+                                    'src' => 'calculator/assets/images/usp/param_01.png'
+                                ]
+                            ],
+                            [
+                                'key' => 'width',
+                                'title' => 'Ширина',
+                                'required' => true,
+                                'placeholder' => 'Ширина',
+                                'unit' => 'м',
+                                'image' => [
+                                    'style' => ' left: 220px; top: -108px; ',
+                                    'src' => 'calculator/assets/images/usp/param_02.png'
+                                ]
+                            ],
+                            [
+                                'key' => 'height',
+                                'title' => 'Высота УШП',
+                                'description' => '(плита 100мм + ребро)',
+                                'default' => 0.2,
+                                'values' => [0.2, 0.3, 0.4],
+                                'unit' => 'м',
+                                'image' => [
+                                    'style' => 'left: 0; top: -96px; ',
+                                    'src' => 'calculator/assets/images/usp/param_03.png'
+                                ]
+                            ],
+                            [
+                                'key' => 'rib_length',
+                                'title' => 'Длина несущих рёбер',
+                                'description' => '(сумма длин всех несущих стен и перегородок, если у вас свое значение, подставьте его)',
+                                'unit' => 'м',
+                                'image' => [
+                                    'style' => 'left: 152px; top: -58px; ',
+                                    'src' => 'calculator/assets/images/usp/param_04.png'
+                                ]
+                            ],
+                            [
+                                'key' => 'foundation_perimeter',
+                                'title' => 'Периметр фундамента',
+                                'description' => '(это расчетная длина ленты, если у вас свое значение, подставьте его)',
+                                'default' => 0,
+                                'unit' => 'м',
+                                'image' => [
+                                    'style' => 'left: 46px; top: -179px;',
+                                    'src' => 'calculator/assets/images/usp/param_05.png'
+                                ]
+                            ],
+                            [
+                                'key' => 'plate_area',
+                                'title' => 'Площадь плиты',
+                                'description' => '(это расчетная длина ленты, если у вас свое значение, подставьте его)',
+                                'default' => 0,
+                                'unit' => 'м2',
+                                'image' => [
+                                    'style' => 'left: 46px; top: -179px;',
+                                    'src' => 'calculator/assets/images/usp/param_06.png'
+                                ]
+                            ],
+                            [
+                                'key' => 'sand_pad_thickness',
+                                'title' => 'Толщина песчаной подушки',
+                                'default' => 0.3,
+                                'values' => [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+                                'unit' => 'м',
+                                'image' => [
+                                    'style' => 'left: 0; top: -96px; ',
+                                    'src' => 'calculator/assets/images/usp/param_07.png'
+                                ]
+                            ],
+                            [
+                                'key' => 'distance_from_cad',
+                                'title' => 'Расстояние от КАД',
+                                'required' => true,
+                                'default' => 25,
+                                'step' => 1,
+                                'unit' => 'км'
+                            ],
+                        ]
+                    ],
+                    // Доп опции
+                    'additionally' => [
+                        'title' => 'Дополнительные услуги:',
+                        'options' => [
+                            [
+                                'key' => 'additionally_1',
+                                'title' => 'Устройство дренажа',
+                                'description' => '(по периметру фундамента)'
+                            ],
+                            [
+                                'key' => 'additionally_2',
+                                'title' => 'Устройство ливневой канализации',
+                                'description' => '(сбор и отвод воды с водосточной системы дома)'
+                            ],
+                            [
+                                'key' => 'additionally_3',
+                                'title' => 'Устройство бетонной отмостки с утеплением 50мм',
+                            ],
+                            [
+                                'key' => 'additionally_4',
+                                'title' => 'Разводка канализации',
+                                'description' => '(система труб d110мм, укладывается в подушку фундамента)'
+                            ],
+                            [
+                                'key' => 'additionally_5',
+                                'title' => 'Коллекторная разводка труб ХВС и ГВС по точкам потребления',
+                                'description' => '(указано 12 точек, примерный расчет)'
+                            ],
+                            [
+                                'key' => 'additionally_6',
+                                'title' => 'Монтаж ЛОС, типа «Астра-5»',
+                            ],
+                            [
+                                'key' => 'additionally_7',
+                                'title' => 'Обеспечение электричеством',
+                                'description' => '(аренда генератора)'
+                            ],
+                            [
+                                'key' => 'additionally_8',
+                                'title' => 'Аренда вагончика для проживания бригады',
+                            ]
+
+                        ]
+                    ]
                 ]
             ]
         ];
@@ -1523,6 +1661,217 @@ class CalculatorsData
                             'quantity' => 1,
                             'unit' => 'шт'
                         ]
+                    ]
+                ]
+            ],
+            'usp' => [
+                'works' => [
+                    'title' => 'Работы',
+                    'options' => [
+                        'breakdown_axes' => [
+                            'title' => 'Планировка территории, разбивка на местности',
+                            'quantity' => 1,
+                            'basic_price' => [6000],
+                            'unit' => 'шт'
+                        ],
+                        'excavation' => [
+                            'title' => 'Земляные работы (разработка котлована механизированным способом, ручная доработка)',
+                            'basic_price' => [300],
+                            'unit' => 'м<sup>3</sup>'
+                        ],
+                        'geotextile_laying' => [
+                            'title' => 'Укладка геотекстиля',
+                            'quantity_coeff' => [1.3],
+                            'basic_price' => [20],
+                            'unit' => 'м<sup>3</sup>'
+                        ],
+                        'gravel_pad_device' => [
+                            'title' => 'Устройство песчано-гравийной подушки с послойным уплотнением виброплитой',
+                            'quantity_coeff' => [1.3, 1.3],
+                            'basic_price' => [300],
+                            'unit' => 'м<sup>3</sup>'
+                        ],
+                        'uklad_utep' => [
+                            'title' => 'Укладка утеплителя',
+                            'basic_price' => [70],
+                            'unit' => 'шт'
+                        ],
+                        'uklad_tech_film' => [
+                            'title' => 'Укладка технической плёнки',
+                            'basic_price' => [20],
+                            'unit' => 'м<sup>2</sup>'
+                        ],
+                        'mon_trub' => [
+                            'title' => 'Монтаж труб теплого пола с подключением и опрессовкой коллекторной группы',
+                            'basic_price' => [480],
+                            'unit' => 'м<sup>2</sup>'
+                        ],
+                        'beton_rab' => [
+                            'title' => 'Бетонные работы (выставление опалубки, вязка арматуры, заливка бетона, демонтаж опалубки)',
+                            'basic_price' => [6000],
+                            'quantity_coeff' => [1.03],
+                            'unit' => 'м<sup>3</sup>'
+                        ],
+                        'mon_zak' => [
+                            'title' => 'Монтаж закладных под воду, электричество и канализацию',
+                            'basic_price' => [2000],
+                            'unit' => 'шт'
+                        ]
+                    ]
+                ],
+                'materials' => [
+                    'title' => 'Материалы',
+                    'options' => [
+                        'sand_delivery' => [
+                            'title' => 'Песок с доставкой',
+                            'basic_price' => [550],
+                            'quantity_coeff' => [1.3],
+                            'unit' => 'м<sup>3</sup>'
+                        ],
+                        'rock_20_40' => [
+                            'title' => 'Щебень гр.фр.20-40 с доставкой',
+                            'quantity_coeff' => [1.3],
+                            'basic_price' => [1300],
+                            'unit' => 'м<sup>2</sup>'
+                        ],
+                        'geotextile' => [
+                            'title' => 'Геотекстиль',
+                            'quantity_coeff' => [1.3],
+                            'basic_price' => [35],
+                            'unit' => 'м<sup>2</sup>'
+                        ],
+                        'technical_film' => [
+                            'title' => 'Пленка техническая',
+                            'quantity_coeff' =>  [1.3],
+                            'basic_price' => [20],
+                            'unit' => 'м<sup>2</sup>'
+                        ],
+                        'formwork' => [
+                            'title' => 'Опалубка, пиломатериалы',
+                            'quantity_coeff' => [1.15],
+                            'basic_price' => [8500],
+                            'unit' => 'м<sup>3</sup>'
+                        ],
+                        'armature_a500С_d12mm' => [
+                            'title' => 'Арматура А500С d12мм',
+                            'quantity_coeff' => [1.2],
+                            'basic_price' => [41200],
+                            'unit' => 'т'
+                        ],
+                        'armature_a500С_d8mm' => [
+                            'title' => 'Арматура А500С d8мм',
+                            'quantity_coeff' => [1.2],
+                            'basic_price' => [44900],
+                            'unit' => 'т'
+                        ],
+                        'commercial_concrete' => [
+                            'title' => 'Бетон товарный В22,5М300П3 с доставкой',
+                            'basic_coeff' => [30, 450, 15],
+                            'quantity_coeff' => [1.03],
+                            'basic_price' => [3350],
+                            'unit' => 'м<sup>3</sup>'
+                        ],
+                        'technik_400' => [
+                            'title' => 'Технониколь XPS Carbon Prof 400, упак',
+                            'quantity_coeff' => [4],
+                            'basic_price' => [1400],
+                            'unit' => 'упак.'
+                        ],
+                        'trub_pol' => [
+                            'title' => 'Труба теплого пола Pex 20х0,2мм, Valtec',
+                            'quantity_coeff' => [4.5],
+                            'basic_price' => [100],
+                            'unit' => 'м.п.'
+                        ],
+                        'coll_group' => [
+                            'title' => 'Коллекторная группа',
+                            'basic_price' => [25000],
+                            'unit' => 'компл.'
+                        ],
+                        'antifriz' => [
+                            'title' => 'Антифриз',
+                            'quantity_coeff' => [0.2],
+                            'basic_price' => [150],
+                            'unit' => 'л'
+                        ],
+                        'setka_d8' => [
+                            'title' => 'Сетка арматурная d8, 150х150мм',
+                            'basic_price' => [250],
+                            'quantity_coeff' => [1.2],
+                            'unit' => 'м<sup>2</sup>'
+                        ],
+                        'autonasos' => [
+                            'title' => 'Работа автобетононасоса (разгрузка бетонной смеси)',
+                            'basic_coeff' => [2, 60, 6],
+                            'basic_price' => [1800],
+                            'unit' => 'смена'
+                        ]
+                    ]
+                ],
+                'overhead_transport' => [
+                    'title' => 'Накладные и транспортные расходы',
+                    'options' => [
+                        'overhead' => [
+                            'title' => 'Накладные и прочие расходы (фиксаторы, саморезы, гвозди, подставки, вязальная проволока и прочее)',
+                            'basic_coeff' => [0.1],
+                            'quantity' => 1,
+                            'unit' => 'шт'
+                        ],
+                        'transport' => [
+                            'title' => 'Транспортные и логистические расходы',
+                            'basic_coeff' => [2, 50, 2, 0.04],
+                            'basic_price' => [6000],
+                            'quantity' => 1,
+                            'unit' => 'шт'
+                        ]
+                    ]
+                ],
+                'additional_work' => [
+                    'title' => 'Дополнительные работы и услуги',
+                    'options' => [
+                        'ust_drenage' => [
+                            'title' => 'Устройство дренажа по периметру фундамента (с отводом в сторону на 10м и установкой дренажных колодцев)',
+                            'basic_price' => [1100],
+                            'unit' => 'м.п.'
+                        ],
+                        'ust_liv' => [
+                            'title' => 'Устройство ливневой канализации (установка дождеприемников под водосточную систему дома, прокладка труб с отводом от дома на 10м)',
+                            'basic_price' => [1000],
+                            'unit' => 'м.п.'
+                        ],
+                        'ust_beton' => [
+                            'title' => 'Устройство бетонной отмостки с утеплением 50мм',
+                            'basic_price' => [2350],
+                            'unit' => 'м.п.'
+                        ],
+                        'razvod_kanal' => [
+                            'title' => 'Разводка канализационных труб под фундаментом, d110мм',
+                            'basic_price' => [1200],
+                            'unit' => 'м.п.'
+                        ],
+                        'koll_razvod' => [
+                            'title' => 'Коллекторная разводка труб ХВС и ГВС по точкам потребеления',
+                            'basic_price' => [6000],
+                            'unit' => 'точка'
+                        ],
+                        'mon_los' => [
+                            'title' => 'Монтаж ЛОС, типа «Астра-5»',
+                            'basic_price' => [130000],
+                            'unit' => 'компл.'
+                        ],
+                        'aren_gen' => [
+                            'title' => 'Аренда генератора (если нет электричества на участке)',
+                            'basic_price' => [6000],
+                            'basic_coeff' => [50000, 800],
+                            'unit' => 'шт'
+                        ],
+                        'aren_vag' => [
+                            'title' => 'Аренда вагончика для проживания бригады',
+                            'basic_price' => [7000],
+                            'basic_coeff' => [2, 50, 2, 6000],
+                            'unit' => 'шт'
+                        ],
+
                     ]
                 ]
             ],

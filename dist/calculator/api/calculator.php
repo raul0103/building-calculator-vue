@@ -35,4 +35,10 @@ switch ($_GET['calculator_key_active']) {
         $calculate = new DrenageUp($_GET['values']);
         echo json_encode($calculate->result());
         return;
+        /** УШП */
+    case 'usp':
+        include '../calculators/USP.php';
+        $calculate = new USP($_GET['values']);
+        echo json_encode($calculate->result());
+        return;
 }
