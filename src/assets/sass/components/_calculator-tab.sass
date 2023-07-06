@@ -68,9 +68,9 @@
                     text-align: center
                     font-weight: bold
             &__image
-                display: flex
-                align-items: center
-                justify-content: center
+                // display: flex
+                // align-items: center
+                // justify-content: center
                 @media (max-width:$laptop-width)
                     display: none!important
 
@@ -85,6 +85,8 @@
                         position: absolute
                         z-index: 10
                 &-main
+                    position: relative
+                    top: 100px
                     img
                         transition: $medium-transition
             &__fields

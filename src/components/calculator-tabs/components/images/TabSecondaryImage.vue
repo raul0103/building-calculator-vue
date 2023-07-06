@@ -12,7 +12,7 @@
       :src="`${variables_store.api_url}/${image.src}`"
       :class="{ 'image-hide': hover_image }"
       :style="image.style"
-      v-for="image in Object.values(images_store.active_images)"
+      v-for="image in Object.values(images_store.getActiveImages())"
       :key="image"
     />
   </div>

@@ -24,7 +24,7 @@ class CalculatorsData
                 'title' => 'Лента',
                 'image' => [
                     // 'style' => ['', 'position: relative; left: 42px; top: -25px;'],
-                    'style' => ['', ''],
+                    'style' => ['', 'right: -39px; top: -6px; position: relative;'],
                     'src' =>  [
                         'calculator/assets/images/tape/basic_01.png',
                         'calculator/assets/images/tape/basic_02.png'
@@ -57,7 +57,7 @@ class CalculatorsData
                                 'placeholder' => 'Длина',
                                 'unit' => 'м',
                                 'image' => [
-                                    'style' => ' left: 0; top: -33px; ',
+                                    'style' => ' left: -4px; top: 200px; ',
                                     'src' => 'calculator/assets/images/tape/param_01.png'
                                 ]
                             ],
@@ -68,7 +68,7 @@ class CalculatorsData
                                 'placeholder' => 'Ширина',
                                 'unit' => 'м',
                                 'image' => [
-                                    'style' => ' left: 220px; top: -108px; ',
+                                    'style' => ' left: 227px; top: 129px; ',
                                     'src' => 'calculator/assets/images/tape/param_02.png'
                                 ]
                             ],
@@ -79,7 +79,7 @@ class CalculatorsData
                                 'values' => [0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8],
                                 'unit' => 'м',
                                 'image' => [
-                                    'style' => 'left: 0; top: -96px; ',
+                                    'style' => 'left: -5px; top:129px; ',
                                     'src' => 'calculator/assets/images/tape/param_03.png'
                                 ]
                             ],
@@ -90,7 +90,7 @@ class CalculatorsData
                                 'values' => [0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6],
                                 'unit' => 'м',
                                 'image' => [
-                                    'style' => 'left: 152px; top: -58px; ',
+                                    'style' => 'left: 123px; top: 249px; ',
                                     'src' => 'calculator/assets/images/tape/param_04.png'
                                 ]
                             ],
@@ -101,7 +101,7 @@ class CalculatorsData
                                 'default' => 0,
                                 'unit' => 'м.п.',
                                 'image' => [
-                                    'style' => 'left: 65px; top: -128px;',
+                                    'style' => 'left: 59px; top: 89px;',
                                     'src' => 'calculator/assets/images/tape/param_05.png'
                                 ]
                             ],
@@ -112,7 +112,7 @@ class CalculatorsData
                                 'default' => 0,
                                 'unit' => 'м.п.',
                                 'image' => [
-                                    'style' => 'left: 46px; top: -179px;',
+                                    'style' => 'left: 46px; top: 58px;',
                                     'src' => 'calculator/assets/images/tape/param_06.png'
                                 ]
                             ],
@@ -135,7 +135,7 @@ class CalculatorsData
                                 'title' => 'Устройство дренажа',
                                 'description' => '(по периметру фундамента)',
                                 'image' => [
-                                    'style' => 'left: 33px; top: -131px;z-index:1',
+                                    'style' => 'left: 29px; top: 93px;z-index:1',
                                     'src' => 'calculator/assets/images/tape/extra_01.png'
                                 ]
                             ],
@@ -144,7 +144,7 @@ class CalculatorsData
                                 'title' => 'Гидроизоляция фундамента',
                                 'description' => '(подошва и цоколь)',
                                 'image' => [
-                                    'style' => 'left: 41px; top: -120px;z-index:1',
+                                    'style' => 'left: 39px; top: 106px;z-index:1',
                                     'src' => 'calculator/assets/images/tape/extra_02.png'
                                 ]
                             ],
@@ -153,7 +153,7 @@ class CalculatorsData
                                 'title' => 'Утепление фундамента',
                                 'description' => '(цоколь по периметру)',
                                 'image' => [
-                                    'style' => 'left: 45px; top: -121px;z-index:2',
+                                    'style' => 'left: 42px; top: 106px;z-index:1',
                                     'src' => 'calculator/assets/images/tape/extra_03.png'
                                 ]
                             ],
@@ -162,7 +162,7 @@ class CalculatorsData
                                 'title' => 'Устройство отмостки',
                                 'description' => '(система канализационных труб с отводом от фундамента)',
                                 'image' => [
-                                    'style' => 'top: -80px; left: 235px;z-index:1',
+                                    'style' => 'left: 233px; top: 147px;z-index:1',
                                     'src' => 'calculator/assets/images/tape/extra_04.png'
                                 ]
                             ],
@@ -180,7 +180,7 @@ class CalculatorsData
                                 'title' => 'Обеспечение электричеством',
                                 'description' => '(аренда генератора на весь этап строительства)',
                                 'image' => [
-                                    'style' => 'left: 44px; top: -185px;z-index:3px',
+                                    'style' => 'left: 64px; top: 35px;z-index:3',
                                     'src' => 'calculator/assets/images/tape/extra_07.png'
                                 ]
                             ],
@@ -188,7 +188,7 @@ class CalculatorsData
                                 'key' => 'trailer_rental',
                                 'title' => 'Аренда вагончика для проживания бригады',
                                 'image' => [
-                                    'style' => 'left: 91px; top: -218px; z-index: 0;',
+                                    'style' => 'left: 110px; top: -8px;z-index:0',
                                     'src' => 'calculator/assets/images/tape/extra_08.png'
                                 ]
                             ],
@@ -200,7 +200,7 @@ class CalculatorsData
                 'title' => 'Плита',
                 'image' => [
                     // 'style' => ['position: relative; left: -3px; top: -10px;', 'position: relative; left: 7px; top: -4px;'],
-                    'style' => ['', ''],
+                    'style' => ['position: relative; left: -6px; top: -7px;', 'position: relative; left: -1px; top: -7px;z-index:1;'],
                     'src' =>  [
                         'calculator/assets/images/plate/basic_01.png',
                         'calculator/assets/images/plate/basic_02.png'
@@ -218,7 +218,7 @@ class CalculatorsData
                                 'placeholder' => 'Длина',
                                 'unit' => 'м',
                                 'image' => [
-                                    'style' => ' left: 0; top: -33px; ',
+                                    'style' => ' left: -4px; top: 200px; ',
                                     'src' => 'calculator/assets/images/plate/param_01.png'
                                 ]
                             ],
@@ -229,7 +229,7 @@ class CalculatorsData
                                 'placeholder' => 'Ширина',
                                 'unit' => 'м',
                                 'image' => [
-                                    'style' => ' left: 220px; top: -108px; ',
+                                    'style' =>  ' left: 227px; top: 129px; ',
                                     'src' => 'calculator/assets/images/plate/param_02.png'
                                 ]
                             ],
@@ -240,7 +240,7 @@ class CalculatorsData
                                 'values' => [0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.5],
                                 'unit' => 'м',
                                 'image' => [
-                                    'style' => 'left: 0; top: -96px; ',
+                                    'style' => 'left: -5px; top:129px; ',
                                     'src' => 'calculator/assets/images/plate/param_03.png'
                                 ]
                             ],
@@ -251,7 +251,7 @@ class CalculatorsData
                                 'default' => 0,
                                 'unit' => 'м2',
                                 'image' => [
-                                    'style' => 'left: 51px; top: -176px;',
+                                    'style' =>  'left: 46px; top: 58px;',
                                     'src' => 'calculator/assets/images/plate/param_04.png'
                                 ]
                             ],
@@ -262,7 +262,7 @@ class CalculatorsData
                                 'default' => 0,
                                 'unit' => 'м.п.',
                                 'image' => [
-                                    'style' => 'left: 51px; top: -183px;',
+                                    'style' => 'left: 46px; top: 51px;',
                                     'src' => 'calculator/assets/images/plate/param_05.png'
                                 ]
                             ],
@@ -298,18 +298,14 @@ class CalculatorsData
                             [
                                 'key' => 'additionally_1',
                                 'title' => 'Укладка геомембраны',
-                                'description' => '(используется вместо подбетонного основания)',
-                                'image' => [
-                                    'style' => 'left: 33px; top: -131px;z-index:1',
-                                    'src' => 'calculator/assets/images/plate/extra_01.png'
-                                ]
+                                'description' => '(используется вместо подбетонного основания)'
                             ],
                             [
                                 'key' => 'additionally_2',
                                 'title' => 'Подбетонное основание',
                                 'description' => '(100мм, бетон в7,5)',
                                 'image' => [
-                                    'style' => 'left: 33px; top: -131px;z-index:1',
+                                    'style' => 'left: 36px; top: 183px;z-index:2',
                                     'src' => 'calculator/assets/images/plate/extra_02.png'
                                 ]
                             ],
@@ -318,25 +314,21 @@ class CalculatorsData
                                 'title' => 'Устройство дренажа',
                                 'description' => '(по периметру фундамента)',
                                 'image' => [
-                                    'style' => 'left: 33px; top: -131px;z-index:1',
+                                    'style' => 'left: 17px; top: 164px;z-index:2',
                                     'src' => 'calculator/assets/images/plate/extra_03.png'
                                 ]
                             ],
                             [
                                 'key' => 'additionally_4',
                                 'title' => 'Гидроизоляция подошвы плиты',
-                                'description' => '(рулонная, Технониколь)',
-                                'image' => [
-                                    'style' => 'left: 33px; top: -131px;z-index:1',
-                                    'src' => 'calculator/assets/images/plate/extra_04.png'
-                                ]
+                                'description' => '(рулонная, Технониколь)'
                             ],
                             [
                                 'key' => 'additionally_5',
                                 'title' => 'Утепление подошвы плиты',
                                 'description' => '(Пеноплекс 50мм)',
                                 'image' => [
-                                    'style' => 'left: 33px; top: -131px;z-index:1',
+                                    'style' => 'left: 47px; top: 186px;z-index:2',
                                     'src' => 'calculator/assets/images/plate/extra_05.png'
                                 ]
                             ],
@@ -345,7 +337,7 @@ class CalculatorsData
                                 'title' => 'Гидроизоляция цоколя плиты',
                                 'description' => '(оклеечная, Технониколь)',
                                 'image' => [
-                                    'style' => 'left: 33px; top: -131px;z-index:1',
+                                    'style' => 'left: 46px; top: 124px;z-index:2',
                                     'src' => 'calculator/assets/images/plate/extra_06.png'
                                 ]
                             ],
@@ -354,7 +346,7 @@ class CalculatorsData
                                 'title' => 'Утепление цоколя плиты',
                                 'description' => '(Пеноплекс 50мм)',
                                 'image' => [
-                                    'style' => 'left: 33px; top: -131px;z-index:1',
+                                    'style' => 'left: 38px; top: 105px;z-index:2',
                                     'src' => 'calculator/assets/images/plate/extra_07.png'
                                 ]
                             ],
@@ -363,7 +355,7 @@ class CalculatorsData
                                 'title' => 'Устройство отмостки',
                                 'description' => '(ширина 1м)',
                                 'image' => [
-                                    'style' => 'left: 33px; top: -131px;z-index:1',
+                                    'style' => 'left: 228px; top: 144px;z-index:2',
                                     'src' => 'calculator/assets/images/plate/extra_08.png'
                                 ]
                             ],
@@ -371,18 +363,14 @@ class CalculatorsData
                             [
                                 'key' => 'additionally_9',
                                 'title' => 'Разводка канализации',
-                                'description' => '(система труб d110мм, укладывается в подушку фундамента)',
-                                'image' => [
-                                    'style' => 'left: 33px; top: -131px;z-index:1',
-                                    'src' => 'calculator/assets/images/plate/extra_09.png'
-                                ]
+                                'description' => '(система труб d110мм, укладывается в подушку фундамента)'
                             ],
                             [
                                 'key' => 'additionally_10',
                                 'title' => 'Обеспечение электричеством',
                                 'description' => '(аренда генератора)',
                                 'image' => [
-                                    'style' => 'left: 33px; top: -131px;z-index:1',
+                                    'style' => 'left: 67px; top: 38px;z-index:3',
                                     'src' => 'calculator/assets/images/plate/extra_10.png'
                                 ]
                             ],
@@ -390,7 +378,7 @@ class CalculatorsData
                                 'key' => 'additionally_11',
                                 'title' => 'Аренда вагончика для проживания бригады',
                                 'image' => [
-                                    'style' => 'left: 33px; top: -131px;z-index:1',
+                                    'style' => 'left: 133px; top: -4px;z-index:1',
                                     'src' => 'calculator/assets/images/plate/extra_11.png'
                                 ]
                             ],
@@ -402,7 +390,7 @@ class CalculatorsData
                 'title' => 'Плита с нижним ростверком',
                 'image' => [
                     // 'style' => ['', 'position: relative; left: 42px; top: -25px;'],
-                    'style' => ['', ''],
+                    'style' => ['position: relative; left: -6px; top: -7px;', 'position: relative; left: -1px; top: -7px;z-index:1;'],
                     'src' =>  [
                         'calculator/assets/images/grillagelow/basic_01.png',
                         'calculator/assets/images/grillagelow/basic_02.png'
@@ -419,7 +407,7 @@ class CalculatorsData
                                 'placeholder' => 'Длина',
                                 'unit' => 'м',
                                 'image' => [
-                                    'style' => ' left: 0; top: -33px; ',
+                                    'style' => ' left: -4px; top: 200px; ',
                                     'src' => 'calculator/assets/images/grillagelow/param_01.png'
                                 ]
                             ],
@@ -430,7 +418,7 @@ class CalculatorsData
                                 'placeholder' => 'Ширина',
                                 'unit' => 'м',
                                 'image' => [
-                                    'style' => ' left: 0; top: -33px; ',
+                                    'style' => ' left: 227px; top: 129px; ',
                                     'src' => 'calculator/assets/images/grillagelow/param_02.png'
                                 ]
                             ],
@@ -441,7 +429,7 @@ class CalculatorsData
                                 'values' => [0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5],
                                 'unit' => 'м',
                                 'image' => [
-                                    'style' => ' left: 0; top: -33px; ',
+                                    'style' => 'left: -5px; top:129px; ',
                                     'src' => 'calculator/assets/images/grillagelow/param_03.png'
                                 ]
                             ],
@@ -452,7 +440,7 @@ class CalculatorsData
                                 'unit' => 'м2',
                                 'description' => '(это расчетная величина, если у вас свое значение, подставьте его)',
                                 'image' => [
-                                    'style' => ' left: 0; top: -33px; ',
+                                    'style' => 'left: 46px; top: 58px;',
                                     'src' => 'calculator/assets/images/grillagelow/param_04.png'
                                 ]
                             ],
@@ -463,7 +451,7 @@ class CalculatorsData
                                 'unit' => 'м.п.',
                                 'description' => '(это расчетная величина, если у вас свое значение, подставьте его)',
                                 'image' => [
-                                    'style' => ' left: 0; top: -33px; ',
+                                    'style' => 'left: 46px; top: 51px;',
                                     'src' => 'calculator/assets/images/grillagelow/param_05.png'
                                 ]
                             ],
@@ -503,7 +491,7 @@ class CalculatorsData
                                 'values' => [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
                                 'unit' => 'м',
                                 'image' => [
-                                    'style' => ' left: 0; top: -33px; ',
+                                    'style' => 'left: 123px; top: 249px; ',
                                     'src' => 'calculator/assets/images/grillagelow/param_10.png'
                                 ]
                             ],
@@ -534,7 +522,7 @@ class CalculatorsData
                                 'title' => 'Устройство дренажа',
                                 'description' => '(по периметру фундамента)',
                                 'image' => [
-                                    'style' => 'left: 33px; top: -131px;z-index:1',
+                                    'style' => 'left: 17px; top: 164px;z-index:2',
                                     'src' => 'calculator/assets/images/grillagelow/extra_03.png'
                                 ]
                             ],
@@ -543,7 +531,7 @@ class CalculatorsData
                                 'title' => 'Гидроизоляция ростверка и плиты',
                                 'description' => '(Технониколь)',
                                 'image' => [
-                                    'style' => 'left: 33px; top: -131px;z-index:1',
+                                    'style' => 'left: 46px; top: 124px;z-index:2',
                                     'src' => 'calculator/assets/images/grillagelow/extra_04.png'
                                 ]
                             ],
@@ -552,7 +540,7 @@ class CalculatorsData
                                 'title' => 'Утепление боковых стенок',
                                 'description' => '(Пеноплекс 50мм)',
                                 'image' => [
-                                    'style' => 'left: 33px; top: -131px;z-index:1',
+                                    'style' => 'left: 38px; top: 117px;z-index:2',
                                     'src' => 'calculator/assets/images/grillagelow/extra_05.png'
                                 ]
                             ],
@@ -561,7 +549,7 @@ class CalculatorsData
                                 'title' => 'Утепление подошвы',
                                 'description' => '(Пеноплекс 50мм)',
                                 'image' => [
-                                    'style' => 'left: 33px; top: -131px;z-index:1',
+                                    'style' => 'left: 47px; top: 196px;z-index:2',
                                     'src' => 'calculator/assets/images/grillagelow/extra_06.png'
                                 ]
                             ],
@@ -570,7 +558,7 @@ class CalculatorsData
                                 'title' => 'Устройство отмостки',
                                 'description' => '(ширина 1м)',
                                 'image' => [
-                                    'style' => 'left: 33px; top: -131px;z-index:1',
+                                    'style' => 'left: 228px; top: 144px;z-index:2',
                                     'src' => 'calculator/assets/images/grillagelow/extra_07.png'
                                 ]
                             ],
@@ -584,7 +572,7 @@ class CalculatorsData
                                 'title' => 'Обеспечение электричеством',
                                 'description' => '(аренда генератора)',
                                 'image' => [
-                                    'style' => 'left: 33px; top: -131px;z-index:1',
+                                    'style' => 'left: 67px; top: 38px;z-index:3',
                                     'src' => 'calculator/assets/images/grillagelow/extra_09.png'
                                 ]
                             ],
@@ -592,7 +580,7 @@ class CalculatorsData
                                 'key' => 'additionally_10',
                                 'title' => 'Аренда вагончика для проживания бригады',
                                 'image' => [
-                                    'style' => 'left: 33px; top: -131px;z-index:1',
+                                    'style' => 'left: 133px; top: -4px;z-index:1',
                                     'src' => 'calculator/assets/images/grillagelow/extra_10.png'
                                 ]
                             ],
@@ -605,7 +593,7 @@ class CalculatorsData
                 'title' => 'Плита с верхним ростверком',
                 'image' => [
                     // 'style' => ['', 'position: relative; left: 42px; top: -25px;'],
-                    'style' => ['', ''],
+                    'style' => ['position: relative; left: -6px; top: -7px;', 'position: relative; left: -1px; top: -7px;z-index:1;'],
                     'src' =>  [
                         'calculator/assets/images/grillageup/basic_01.png',
                         'calculator/assets/images/grillageup/basic_02.png'
@@ -622,8 +610,8 @@ class CalculatorsData
                                 'placeholder' => 'Длина',
                                 'unit' => 'м',
                                 'image' => [
-                                    'style' => ' left: 0; top: -33px; ',
-                                    'src' => 'calculator/assets/images/grillagelow/param_01.png'
+                                    'style' => ' left: -4px; top: 200px; ',
+                                    'src' => 'calculator/assets/images/grillageup/param_01.png'
                                 ]
                             ],
                             [
@@ -633,8 +621,8 @@ class CalculatorsData
                                 'placeholder' => 'Ширина',
                                 'unit' => 'м',
                                 'image' => [
-                                    'style' => ' left: 0; top: -33px; ',
-                                    'src' => 'calculator/assets/images/grillagelow/param_02.png'
+                                    'style' =>  ' left: 227px; top: 129px; ',
+                                    'src' => 'calculator/assets/images/grillageup/param_02.png'
                                 ]
                             ],
                             [
@@ -644,8 +632,8 @@ class CalculatorsData
                                 'values' => [0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5],
                                 'unit' => 'м',
                                 'image' => [
-                                    'style' => ' left: 0; top: -33px; ',
-                                    'src' => 'calculator/assets/images/grillagelow/param_03.png'
+                                    'style' => 'left: -5px; top:129px; ',
+                                    'src' => 'calculator/assets/images/grillageup/param_03.png'
                                 ]
                             ],
                             [
@@ -655,8 +643,8 @@ class CalculatorsData
                                 'unit' => 'м2',
                                 'description' => '(это расчетная величина, если у вас свое значение, подставьте его)',
                                 'image' => [
-                                    'style' => ' left: 0; top: -33px; ',
-                                    'src' => 'calculator/assets/images/grillagelow/param_04.png'
+                                    'style' =>  'left: 46px; top: 58px;',
+                                    'src' => 'calculator/assets/images/grillageup/param_04.png'
                                 ]
                             ],
                             [
@@ -666,8 +654,8 @@ class CalculatorsData
                                 'unit' => 'м.п.',
                                 'description' => '(это расчетная величина, если у вас свое значение, подставьте его)',
                                 'image' => [
-                                    'style' => ' left: 0; top: -33px; ',
-                                    'src' => 'calculator/assets/images/grillagelow/param_05.png'
+                                    'style' => 'left: 46px; top: 51px;',
+                                    'src' => 'calculator/assets/images/grillageup/param_05.png'
                                 ]
                             ],
                             [
@@ -706,7 +694,7 @@ class CalculatorsData
                                 'values' => [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
                                 'unit' => 'м',
                                 'image' => [
-                                    'style' => ' left: 0; top: -33px; ',
+                                    'style' =>  'left: 116px; top: 176px; ',
                                     'src' => 'calculator/assets/images/grillagelow/param_10.png'
                                 ]
                             ],
@@ -738,7 +726,7 @@ class CalculatorsData
                                 'title' => 'Устройство дренажа',
                                 'description' => '(по периметру фундамента)',
                                 'image' => [
-                                    'style' => 'left: 33px; top: -131px;z-index:1',
+                                    'style' => 'left: 17px; top: 164px;z-index:2',
                                     'src' => 'calculator/assets/images/grillageup/extra_03.png'
                                 ]
                             ],
@@ -747,7 +735,7 @@ class CalculatorsData
                                 'title' => 'Гидроизоляция подошвы',
                                 'description' => '(рулонная, Технониколь)',
                                 'image' => [
-                                    'style' => 'left: 33px; top: -131px;z-index:1',
+                                    'style' => 'left: 46px;top: 139px;z-index:1',
                                     'src' => 'calculator/assets/images/grillageup/extra_04.png'
                                 ]
                             ],
@@ -756,7 +744,7 @@ class CalculatorsData
                                 'title' => 'Утепление подошвы',
                                 'description' => '(Пеноплекс 50мм)',
                                 'image' => [
-                                    'style' => 'left: 33px; top: -131px;z-index:1',
+                                    'style' => 'left: 47px; top: 196px;z-index:2',
                                     'src' => 'calculator/assets/images/grillageup/extra_05.png'
                                 ]
                             ],
@@ -765,7 +753,7 @@ class CalculatorsData
                                 'title' => 'Гидроизоляция боковых стенок',
                                 'description' => '(оклеечная, Технониколь)',
                                 'image' => [
-                                    'style' => 'left: 33px; top: -131px;z-index:1',
+                                    'style' =>  'left: 45px; top: 104px;z-index:2',
                                     'src' => 'calculator/assets/images/grillageup/extra_06.png'
                                 ]
                             ],
@@ -774,7 +762,7 @@ class CalculatorsData
                                 'title' => 'Утепление боковых стенок',
                                 'description' => '(Пеноплекс 50мм)',
                                 'image' => [
-                                    'style' => 'left: 33px; top: -131px;z-index:1',
+                                    'style' =>  'left: 38px; top: 117px;z-index:2',
                                     'src' => 'calculator/assets/images/grillageup/extra_07.png'
                                 ]
                             ],
@@ -783,7 +771,7 @@ class CalculatorsData
                                 'title' => 'Устройство отмостки',
                                 'description' => '(ширина 1м)',
                                 'image' => [
-                                    'style' => 'left: 33px; top: -131px;z-index:1',
+                                    'style' => 'left: 228px;     top: 156px;z-index:2',
                                     'src' => 'calculator/assets/images/grillageup/extra_08.png'
                                 ]
                             ],
@@ -797,7 +785,7 @@ class CalculatorsData
                                 'title' => 'Обеспечение электричеством',
                                 'description' => '(аренда генератора)',
                                 'image' => [
-                                    'style' => 'left: 33px; top: -131px;z-index:1',
+                                    'style' =>  'left: 67px; top: 38px;z-index:3',
                                     'src' => 'calculator/assets/images/grillageup/extra_10.png'
                                 ]
                             ],
@@ -805,7 +793,7 @@ class CalculatorsData
                                 'key' => 'additionally_11',
                                 'title' => 'Аренда вагончика для проживания бригады',
                                 'image' => [
-                                    'style' => 'left: 33px; top: -131px;z-index:1',
+                                    'style' => 'left: 133px; top: -4px;z-index:1',
                                     'src' => 'calculator/assets/images/grillageup/extra_11.png'
                                 ]
                             ],
@@ -818,7 +806,7 @@ class CalculatorsData
                 'title' => 'УШП',
                 'image' => [
                     // 'style' => ['', 'position: relative; left: 42px; top: -25px;'],
-                    'style' => ['', ''],
+                    'style' => ['position: relative; left: -6px; top: -7px;', 'position: relative; left: -1px; top: -7px;z-index:1;'],
                     'src' =>  [
                         'calculator/assets/images/usp/basic_01.png',
                         'calculator/assets/images/usp/basic_02.png'
@@ -836,7 +824,7 @@ class CalculatorsData
                                 'placeholder' => 'Длина',
                                 'unit' => 'м',
                                 'image' => [
-                                    'style' => ' left: 0; top: -33px; ',
+                                    'style' => ' left: -4px; top: 200px; ',
                                     'src' => 'calculator/assets/images/usp/param_01.png'
                                 ]
                             ],
@@ -847,7 +835,7 @@ class CalculatorsData
                                 'placeholder' => 'Ширина',
                                 'unit' => 'м',
                                 'image' => [
-                                    'style' => ' left: 220px; top: -108px; ',
+                                    'style' => ' left: 227px; top: 129px; ',
                                     'src' => 'calculator/assets/images/usp/param_02.png'
                                 ]
                             ],
@@ -859,7 +847,7 @@ class CalculatorsData
                                 'values' => [0.2, 0.3, 0.4],
                                 'unit' => 'м',
                                 'image' => [
-                                    'style' => 'left: 0; top: -96px; ',
+                                    'style' => 'left: -5px; top:129px; ',
                                     'src' => 'calculator/assets/images/usp/param_03.png'
                                 ]
                             ],
@@ -880,7 +868,7 @@ class CalculatorsData
                                 'default' => 0,
                                 'unit' => 'м',
                                 'image' => [
-                                    'style' => 'left: 46px; top: -179px;',
+                                    'style' => 'left: 46px; top: 51px;',
                                     'src' => 'calculator/assets/images/usp/param_05.png'
                                 ]
                             ],
@@ -891,7 +879,7 @@ class CalculatorsData
                                 'default' => 0,
                                 'unit' => 'м2',
                                 'image' => [
-                                    'style' => 'left: 46px; top: -179px;',
+                                    'style' => 'left: 46px; top: 58px;',
                                     'src' => 'calculator/assets/images/usp/param_06.png'
                                 ]
                             ],
@@ -900,11 +888,7 @@ class CalculatorsData
                                 'title' => 'Толщина песчаной подушки',
                                 'default' => 0.3,
                                 'values' => [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
-                                'unit' => 'м',
-                                'image' => [
-                                    'style' => 'left: 0; top: -96px; ',
-                                    'src' => 'calculator/assets/images/usp/param_07.png'
-                                ]
+                                'unit' => 'м'
                             ],
                             [
                                 'key' => 'distance_from_cad',
@@ -923,7 +907,11 @@ class CalculatorsData
                             [
                                 'key' => 'additionally_1',
                                 'title' => 'Устройство дренажа',
-                                'description' => '(по периметру фундамента)'
+                                'description' => '(по периметру фундамента)',
+                                'image' => [
+                                    'style' => 'left: 17px; top: 164px;z-index:2',
+                                    'src' => 'calculator/assets/images/usp/extra_01.png'
+                                ]
                             ],
                             [
                                 'key' => 'additionally_2',
@@ -933,6 +921,10 @@ class CalculatorsData
                             [
                                 'key' => 'additionally_3',
                                 'title' => 'Устройство бетонной отмостки с утеплением 50мм',
+                                'image' => [
+                                    'style' => 'left: 226px; top: 162px;z-index:2',
+                                    'src' => 'calculator/assets/images/usp/extra_03.png'
+                                ]
                             ],
                             [
                                 'key' => 'additionally_4',
@@ -951,11 +943,19 @@ class CalculatorsData
                             [
                                 'key' => 'additionally_7',
                                 'title' => 'Обеспечение электричеством',
-                                'description' => '(аренда генератора)'
+                                'description' => '(аренда генератора)',
+                                'image' => [
+                                    'style' => 'left: 67px; top: 37px;z-index:3',
+                                    'src' => 'calculator/assets/images/usp/extra_07.png'
+                                ]
                             ],
                             [
                                 'key' => 'additionally_8',
                                 'title' => 'Аренда вагончика для проживания бригады',
+                                'image' => [
+                                    'style' => 'left: 101px; top: -2px;z-index:1',
+                                    'src' => 'calculator/assets/images/usp/extra_08.png'
+                                ]
                             ]
 
                         ]
