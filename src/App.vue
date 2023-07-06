@@ -1,5 +1,5 @@
 <template>
-  <button @click="reset">СБРОСИТЬ</button>
+  <!-- <button @click="reset">СБРОСИТЬ</button> -->
 
   <div class="calculator-tab">
     <CalculatorTabs />
