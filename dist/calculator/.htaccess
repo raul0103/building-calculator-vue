@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Проверка, отправлен ли запрос с вашего сайта
+SetEnvIfNoCase Referer "^https?://(www\.)?sitename\.ru" from_example_site
+
+# Запретить доступ, если запрос не отправлен с вашего сайта
+Order deny,allow
+Deny from all
+Allow from env=from_example_site

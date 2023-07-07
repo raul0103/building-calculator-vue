@@ -28,7 +28,7 @@ composer.lock
 *.sln
 *.sw?
 
-.htaccess
+dist/.htaccess
 
 dist/calculator/assets
 dist/calculator/vendor
