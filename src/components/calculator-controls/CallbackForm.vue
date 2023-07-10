@@ -1,9 +1,5 @@
 <template>
-  <form
-    v-if="!is_sent"
-    @submit.prevent="submit"
-    class="calculator-controls__form-callback"
-  >
+  <form @submit.prevent="submit" class="calculator-controls__form-callback">
     <div class="calculator-controls__form-callback__form-groups">
       <div
         v-for="field in callback_fields"
@@ -29,27 +25,38 @@
     </div>
     <ButtonPrimary :pulse="true">Получить подробную смету</ButtonPrimary>
   </form>
+
+  <ModalWindow :is_open="modal.is_open" @close="modal.is_open = false">
+    <template v-slot:header>{{ modal.header }}</template>
+    <template v-slot:content>{{ modal.content }}</template>
+  </ModalWindow>
 </template>
 
 <script>
 import axios from "axios";
 import Inputmask from "inputmask";
 
+import ModalWindow from "../ModalWindow.vue";
 import ButtonPrimary from "@/components/ui/buttons/primary";
 import CalculatorService from "@/services/CalculatorService.js";
-import LocalStorageService from "@/services/LocalStorageService.js";
 import DownloadPdfService from "@/services/DownloadPdfService.js";
 import { useVariablesStore } from "@/stores/variables.js";
 import { useCalculatorStore } from "@/stores/calculator.js";
+import { useCallbackFormStore } from "@/stores/callback-form.js";
 
 export default {
-  components: { ButtonPrimary },
+  components: { ButtonPrimary, ModalWindow },
   data() {
     return {
+      modal: {
+        is_open: false,
+        header: null,
+        content: null,
+      },
       calculator_store: useCalculatorStore(),
       variables_store: useVariablesStore(),
+      callback_form_store: useCallbackFormStore(),
       calculator_service: new CalculatorService(),
-      local_storage_service: new LocalStorageService(),
       download_pdf_service: new DownloadPdfService(),
       callback_fields: [
         {
@@ -79,7 +86,6 @@ export default {
           type: "text",
         },
       ],
-      is_sent: false, // Форма не отправлена
     };
   },
   mounted() {
@@ -90,7 +96,6 @@ export default {
     async submit() {
       // Проверяем на заполненность поля формы звонка
       if (this.validCallbackFields()) {
-        await this.calculator_service.calculate(); // Расчет данных
         this.sendMessage(); // Отправка сообщения менеджеру
       }
     },
@@ -102,6 +107,20 @@ export default {
         valid: field.valid,
       }));
 
+      /**
+       * Сохраняем данные пользователя в хранилище.
+       * Делаем это перед генераций сметы, так как при генерации будут использоваться поля имя, номер польщователя
+       */
+      this.callback_form_store.data.set(
+        this.callback_fields.reduce((acc, field) => {
+          acc[field.name] = field.value;
+          return acc;
+        }, {})
+      );
+
+      // Расчет данных
+      await this.calculator_service.calculate();
+
       // Создаем PDF сметы и имя файла передает со всеми полями менеджеру
       const download_pdf = false;
       const smeta_pdf_filename = await this.download_pdf_service.generatePDF(
@@ -110,13 +129,6 @@ export default {
       fields.push({
         name: "pdf",
         value: location.origin + "/calculator/pdf/" + smeta_pdf_filename,
-        valid: true,
-      });
-
-      // Добавили тип калькулятора
-      fields.push({
-        name: "type",
-        value: this.calculator_store.calculator_key_active,
         valid: true,
       });
 
@@ -130,16 +142,20 @@ export default {
           form_data
         )
         .then((response) => {
-          //Если сообщение отправлено, сохраняем данные в хранилище для дальнейшего использования
+          //Если сообщение не отправлено, удаляем данные из хранилища
           if (response.data.status) {
-            this.local_storage_service.setStorage({
-              "callback-form": this.callback_fields.reduce((acc, field) => {
-                acc[field.name] = field.value;
-                return acc;
-              }, {}),
-            });
-            this.is_sent = true;
+            this.modal.header = "Форма отправлена";
+            this.callback_form_store.sent.set(true);
+          } else {
+            this.callback_form_store.data.remove();
+            this.modal.header = "Ошибка отправки формы";
           }
+
+          this.modal.is_open = true;
+          this.modal.content = response.data.message;
+        })
+        .catch(() => {
+          this.callback_form_store.data.remove();
         });
     },
     validCallbackFields(field = null) {

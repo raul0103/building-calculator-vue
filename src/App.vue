@@ -1,11 +1,9 @@
 <template>
-  <!-- <button @click="reset">СБРОСИТЬ</button> -->
-
   <div class="calculator-tab">
     <CalculatorTabs />
     <CalculatorTab />
   </div>
-  <TableResult />
+  <TableResult v-if="form_sent" />
   <CalculatorControls />
 
   <!-- Генерация табицы для PDF. С таблицей работает services/DownloadPdfService -->
@@ -14,6 +12,7 @@
 
 <script>
 import { useCalculatorStore } from "@/stores/calculator.js";
+import { useCallbackFormStore } from "@/stores/callback-form.js";
 
 import CalculatorTabs from "@/components/calculator-tabs/Tabs.vue";
 import CalculatorTab from "@/components/calculator-tabs/Tab.vue";
@@ -25,17 +24,11 @@ export default {
   data() {
     return {
       calculator_store: useCalculatorStore(),
+      callback_form_store: useCallbackFormStore(),
     };
   },
   mounted() {
     this.calculator_store.getCalculatorDataOnPageLoad();
-  },
-  methods: {
-    reset() {
-      // Для тестов! Сброс данных отправки формы
-      localStorage.removeItem("calculator-a23nof2cs");
-      location.href = location.href;
-    },
   },
   components: {
     CalculatorTabs,
@@ -43,6 +36,11 @@ export default {
     TableResult,
     CalculatorControls,
     GenerateTablePdf,
+  },
+  computed: {
+    form_sent() {
+      return this.callback_form_store.sent.get();
+    },
   },
 };
 </script>

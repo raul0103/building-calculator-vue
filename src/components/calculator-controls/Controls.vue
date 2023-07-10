@@ -8,9 +8,10 @@
     }"
   >
     <!-- Отображаем если пользователь еще не отправлял заявку -->
-    <CallbackForm v-if="!local_storage_service.getStorage('callback-form')" />
+    <CallbackForm v-if="!form_sent" />
 
-    <div v-if="results_store.getResults()">
+    <!-- Отображаем если Есть результат расчета и пользователь отправлял заявку -->
+    <div v-if="results && form_sent">
       <div class="calculator-controls__buttons-row">
         <ButtonPrimary
           :pulse="true"
@@ -54,7 +55,7 @@ import utils from "@/utils/index.js";
 import { useCalculatorStore } from "@/stores/calculator.js";
 import { useFieldsStore } from "@/stores/fields.js";
 import { useResultsStore } from "@/stores/results.js";
-import LocalStorageService from "@/services/LocalStorageService.js";
+import { useCallbackFormStore } from "@/stores/callback-form.js";
 import DownloadPdfService from "@/services/DownloadPdfService.js";
 import ButtonPrimary from "@/components/ui/buttons/primary";
 import CallbackForm from "./CallbackForm.vue";
@@ -67,8 +68,8 @@ export default {
       calculator_store: useCalculatorStore(),
       fields_store: useFieldsStore(),
       results_store: useResultsStore(),
+      callback_form_store: useCallbackFormStore(),
       download_pdf_service: new DownloadPdfService(),
-      local_storage_service: new LocalStorageService(),
       modal_open: false,
       user_email: null,
       error_email: null,
@@ -78,8 +79,7 @@ export default {
   methods: {
     /** Модалка с подтверждением почты */
     confirmEmail() {
-      const callback_data =
-        this.local_storage_service.getStorage("callback-form");
+      const callback_data = this.callback_form_store.data.get();
       this.user_email = callback_data?.email;
 
       this.modal_open = true;
@@ -88,10 +88,9 @@ export default {
     /** Отправка письма, + запись почты в хранилище*/
     submit() {
       if (this.checkEmail()) {
-        const storage_data =
-          this.local_storage_service.getStorage("callback-form");
+        const storage_data = this.callback_form_store.data.get();
         storage_data.email = this.user_email;
-        this.local_storage_service.setStorage(storage_data, "callback-form");
+        this.callback_form_store.data.set(storage_data);
 
         this.download_pdf_service.sendPdfToUserEmail(this.user_email);
         this.modal_open = false;
@@ -110,6 +109,14 @@ export default {
 
       this.error_email = null;
       return true;
+    },
+  },
+  computed: {
+    results() {
+      return this.results_store.getResults();
+    },
+    form_sent() {
+      return this.callback_form_store.sent.get();
     },
   },
 };

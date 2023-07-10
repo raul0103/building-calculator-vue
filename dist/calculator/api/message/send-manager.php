@@ -9,8 +9,21 @@ include $_SERVER['DOCUMENT_ROOT'] . '/calculator/config/config.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/calculator/callbacks/send-message-callback.php';
 
 // Вызываем функцию обратного вызова, если она определена и разрешена
-if (function_exists('sendMailCallback') && MESSAGE_CALLBACK) {
-    sendMailCallback($_POST['fields']);
+if (function_exists('sendMailCallback') && MESSAGE_CALLBACK) {;
+
+    $send = sendMailCallback($_POST['fields']);
+
+    if ($send['status']) {
+        echo json_encode([
+            'status' => true,
+            'message' => 'Ваша заявка принята'
+        ]);
+    } else {
+        echo json_encode([
+            'status' => false,
+            'message' => 'Форма не отправлена. Ошибка на стороне сервера:' . $send['message']
+        ], JSON_UNESCAPED_UNICODE);
+    }
 } else {
     sendMessageToEmail();
 }

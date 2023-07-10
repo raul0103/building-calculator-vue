@@ -62,10 +62,7 @@
 
     <!--  Показываем уведомление только если пользователь отправил форму и нет результатов -->
     <Transition>
-      <div
-        v-if="!results && local_storage_service.getStorage('callback-form')"
-        class="calculator-result__board"
-      >
+      <div v-if="!results" class="calculator-result__board">
         Заполните обязательные поля
       </div>
     </Transition>
@@ -74,13 +71,11 @@
 
 <script>
 import { useResultsStore } from "@/stores/results.js";
-import LocalStorageService from "@/services/LocalStorageService.js";
 
 export default {
   data() {
     return {
       results_store: useResultsStore(),
-      local_storage_service: new LocalStorageService(),
     };
   },
   computed: {
